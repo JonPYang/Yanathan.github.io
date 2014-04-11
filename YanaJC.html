@@ -3,7 +3,7 @@
 <head>
 <script>
 var cardDeck = {1,2,3,4,5}
-
+var test = "Now you see me..."
 function newDeck(){
   for card in cardDeck {
     <input id=card style="visiblity:visible" type="button" value=card onclick="function()">
@@ -16,14 +16,12 @@ document.getElementById('secondaryButton').style.visibility="visible";
 
 function hide2(){
   document.getElementById("demo2").innerHTML=count;
-  count++
-  
+  count++;
 }
 
 function show()
 {
 document.getElementById('secondaryButton').style.visibility="hidden";
-document.getElementById('myButton').id="new ID";
 document.getElementById('myButton').style.visibility="visible";
 }
 </script>
@@ -37,8 +35,7 @@ document.getElementById('myButton').style.visibility="visible";
 <p id="demo2">Second test</p>
 
 <button type="button" onclick="hide2()">Try it</button>
-<input id="carddeck create" type="button" value="Make Deck" onclick="newDeck()">
-<input id="myButton" style="visibility:visible" type="button" value="now you see me..." onclick="hide()">
+<input id="myButton" style="visibility:visible" type="button" value=test onclick="hide()">
 <input id="secondaryButton" style="visibility:hidden" type="button" value="now you don't!" onclick="show()">
 
 </body>
