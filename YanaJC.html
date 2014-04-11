@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<input id="myButton" style="visibility:visible" type="button" value="now you see me..." onclick="hide()">
+<input id="secondaryButton" style="visibility:hidden" type="button" value="now you don't!" onclick+"show()"
+
 <script>
-function myFunction()
+function hide() {
+document.getElementById('myButton').style.visibility="hidden";
+document.getElementById('secondaryButton').style.visibility="visible"
+}
+
+function show()
 {
-var question = prompt("HELLO?");
+document.getElementById('secondaryButton').style.visibility="hidden";
+document.getElementById('myButton').style.visibility="visible";
 }
 </script>
 </head>
@@ -15,7 +24,7 @@ var question = prompt("HELLO?");
 
 <p id="demo">Testing</p>
 
-<button type="button" onclick="myFunction()">Try it</button>
+<button type="button" onclick="hide()">Try it</button>
 
 </body>
 </html> 
