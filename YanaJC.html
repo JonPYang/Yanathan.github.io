@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<input id="myButton" style="visibility:visible" type="button" value="now you see me..." onclick="hide()">
-<input id="secondaryButton" style="visibility:hidden" type="button" value="now you don't!" onclick="show()">
-
 <script>
+var count;
+
 function hide() {
 document.getElementById('myButton').style.visibility="hidden";
-document.getElementById('secondaryButton').style.visibility="visible"
+document.getElementById('secondaryButton').style.visibility="visible";
+}
+
+function hide2(counting){
+  
+  document.getElementById('tryIt');
+  counting++;
+  document.getElementById("demo2").innerHTML=counting;
+  
 }
 
 function show()
@@ -23,8 +30,11 @@ document.getElementById('myButton').style.visibility="visible";
 <h1>My Web Page</h1>
 
 <p id="demo">Testing</p>
+<p id="demo2">Second test</p>
 
-<button type="button" onclick="hide()">Try it</button>
+<button type="button" onclick="hide2(count)">Try it</button>
+<input id="myButton" style="visibility:visible" type="button" value="now you see me..." onclick="hide()">
+<input id="secondaryButton" style="visibility:hidden" type="button" value="now you don't!" onclick="show()">
 
 </body>
 </html> 
