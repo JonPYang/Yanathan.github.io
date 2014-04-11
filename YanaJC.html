@@ -9,11 +9,9 @@ document.getElementById('myButton').style.visibility="hidden";
 document.getElementById('secondaryButton').style.visibility="visible";
 }
 
-function hide2(counting){
-  document.write(count);
-  count++;
-  document.write(count);
-  document.getElementById("demo2").innerHTML=counting;
+function hide2(){
+  document.getElementById("demo2").innerHTML=count;
+  count++
   
 }
 
@@ -32,7 +30,7 @@ document.getElementById('myButton').style.visibility="visible";
 <p id="demo">Testing</p>
 <p id="demo2">Second test</p>
 
-<button type="button" onclick="hide2(0)">Try it</button>
+<button type="button" onclick="hide2()">Try it</button>
 <input id="myButton" style="visibility:visible" type="button" value="now you see me..." onclick="hide()">
 <input id="secondaryButton" style="visibility:hidden" type="button" value="now you don't!" onclick="show()">
 
