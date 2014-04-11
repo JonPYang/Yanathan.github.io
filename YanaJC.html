@@ -2,7 +2,7 @@
 <html>
 <head>
 <script>
-var count;
+var count = 0;
 
 function hide() {
 document.getElementById('myButton').style.visibility="hidden";
@@ -10,9 +10,9 @@ document.getElementById('secondaryButton').style.visibility="visible";
 }
 
 function hide2(counting){
-  
-  document.getElementById('tryIt');
-  counting++;
+  document.write(count);
+  count++;
+  document.write(count);
   document.getElementById("demo2").innerHTML=counting;
   
 }
