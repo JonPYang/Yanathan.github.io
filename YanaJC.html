@@ -32,7 +32,7 @@ function discard(card){
   discardPile.push(card);
   var index = hand.indexOf(card);
   hand.splice(index, 1);
-  document.getElementById("deckTest").innerHTML=deck.toString();
+  document.getElementById("deckTest").innerHTML=initialDeck.toString();
   document.getElementById("handTest").innerHTML=hand.toString();
   document.getElementById("discardPile").innerHTML=discardPile.toString();  
 }
