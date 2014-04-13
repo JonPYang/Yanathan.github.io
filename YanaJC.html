@@ -6,7 +6,7 @@ var hand = [];
 var drawCount = 5;
 var discardPile = [];
 
-/*function add(deck){
+function add(deck){
   var element = document.createElement("button");
   element.setAttribute("name","testname");
   element.setAttribute("value", "testvalue");
@@ -14,7 +14,7 @@ var discardPile = [];
   var foo = document.getElementById("fooBar");
   foo.appendChild(element);
 }
-*/
+
 function draw(deck){
   // Return first 5 cards from the given deck
   if(deck.length !==0){
@@ -45,7 +45,7 @@ function shuffle(deck) {
     deck[m] = deck[i];
     deck[i] = t;
   }
-  document.getElementById("demo").innerHTML=deck.toString();
+  document.getElementById("deckTest").innerHTML=deck.toString();
   return deck;
 }
 
@@ -63,6 +63,7 @@ function shuffle(deck) {
 <button type="button" onclick="shuffle(initialDeck)">Shuffle!</button>
 <button type="button" onclick="draw(initialDeck)">Draw cards</button>
 <button type="button" onclick="add('12')">Add</button>
+<span id="fooBar"></span>
 </form>
 </body>
 </html> 
