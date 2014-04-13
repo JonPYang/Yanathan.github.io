@@ -34,12 +34,13 @@ function discard(card){
         discardPile.push(card);
         hand.splice(index, 1)
     }
-    else{
-        document.getElementById("discardPile").innerHTML="ERROR NO CARD FOUND";
-    }
   document.getElementById("deckTest").innerHTML=initialDeck.toString();
   document.getElementById("handTest").innerHTML=hand.toString();
-  document.getElementById("discardPile").innerHTML=discardPile.toString();  
+  document.getElementById("discardPile").innerHTML=discardPile.toString();
+  if(index = -1)
+  {
+        document.getElementById("discardPile").innerHTML="ERROR NO CARD FOUND";
+    }
 }
 
 function shuffle(deck) {
