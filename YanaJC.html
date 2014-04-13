@@ -3,12 +3,15 @@
 <head>
 <script>
 var initialDeck = [1,2,3,4,5,6,7,8,9,10,11];
-var deck = [];
+var hand = [];
+var drawCount = 0;
 
 function draw(deck){
   // Return first 5 cards from the given deck
-  var hand = [];
-  hand.push(deck.pop()); 
+  for(var i = 0; i < drawCount; i++) {
+      hand.push(deck.pop()); 
+  }
+
   document.getElementById("deckTest").innerHTML=hand.toString();
   document.getElementById("handTest").innerHTML=deck.toString();
   return hand;
