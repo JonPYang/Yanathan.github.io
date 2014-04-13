@@ -12,8 +12,8 @@ function add(deck){
         hand.push(deck.pop()); 
           var element = document.createElement("input");
           element.setAttribute("type", "button");
-          element.setAttribute("name", hand[i]);
-          element.setAttribute("value", hand[i]);
+          element.setAttribute("name", deck[i]);
+          element.setAttribute("value", deck[i]);
           var foo = document.getElementById("fooBar");
           foo.appendChild(element);
         }
