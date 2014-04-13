@@ -7,26 +7,27 @@ var drawCount = 5;
 var discardPile = [];
 
 function add(deck){
-  var element = document.createElement("input");
-  element.setAttribute("type", "button");
-  element.setAttribute("name", "testname");
-  element.setAttribute("value", "testvalue");
-  
-  var foo = document.getElementById("fooBar");
-  foo.appendChild(element);
-}
-
-function draw(deck){
-  // Return first 5 cards from the given deck
-  if(deck.length !==0){
+    if(deck.length !==0){
       for(var i = 0; i < drawCount && deck.length !== 0; i++) {
         hand.push(deck.pop()); 
+          var element = document.createElement("input");
+          element.setAttribute("type", "button");
+          element.setAttribute("name", hand[i]);
+          element.setAttribute("value", hand[i]);
+          var foo = document.getElementById("fooBar");
+          foo.appendChild(element);
         }
     }
+    return hand;
+}
+
+/*function draw(deck){
+  // Return first 5 cards from the given deck
+
   document.getElementById("deckTest").innerHTML=deck.toString();
   document.getElementById("handTest").innerHTML=hand.toString();
-  return hand;
-}
+  
+}*/
   
 function discard(card){
   discardPile.push(card);
@@ -63,8 +64,8 @@ function shuffle(deck) {
 <p id="discardPile">Discard Pile</p>
 <input type="button" onclick="shuffle(initialDeck)" value="Shuffle!">
 <input type="button" onclick="draw(initialDeck)" value="Draw!">
-<input type="button" onclick="add(1)" value="Add">
-<span id="fooBar">TestingTesting</span>
+<input type="button" onclick="add(initialDeck)" value="Add">
+<span id="fooBar">Deck: </span>
 </form>
 </body>
 </html> 
