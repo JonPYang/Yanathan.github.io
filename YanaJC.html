@@ -21,25 +21,25 @@ function add(deck){
     }
         document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
   document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
-  document.getElementById("discardPile").innerHTML="DiscardPile: " + discardPile.toString();  
+  document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();  
     return hand;
 }
 
 function check(){
     document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
   document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
-  document.getElementById("discardPile").innerHTML="DiscardPile: " + discardPile.toString();  
+  document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();  
 }
   
 function discard(card){
- 
+ document.getElementById("card").innerHTML="indexOf =" + hand.indexOf(card);
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(index, 1));
     }
   document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
   document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
-  document.getElementById("discardPile").innerHTML="DiscardPile: " + discardPile.toString();
-   document.getElementById("card").innerHTML="card =" + card;
+  document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();
+   
 // indexOf not finding card in hand right now
 
 }
