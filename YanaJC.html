@@ -36,9 +36,9 @@ function discard(card){
   document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
   document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
   document.getElementById("discardPile").innerHTML="DiscardPile: " + discardPile.toString();
-  if(index = -1)
+  if(index === -1)
   {
-        document.getElementById("discardPile").innerHTML="ERROR NO CARD FOUND";
+        document.getElementById("discardPile").innerHTML="ERROR" + hand.indexOf(card);
     }
 }
 
