@@ -31,9 +31,7 @@ function check(){
 function discard(card){
     document.getElementById("card").innerHTML=card;
     if (hand.indexOf(card) > -1) {
-        var index = hand.indexOf(card);
-        discardPile.push(card);
-        hand.splice(index, 1)
+        discardPile.push(hand.splice(index, 1));
     }
   document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
   document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
