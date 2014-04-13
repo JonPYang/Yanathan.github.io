@@ -2,7 +2,28 @@
 <html>
 <head>
 <script>
-var test = "Now you see me..."
+var initialDeck = [1,2,3,4,5,6,7,8,9,10,11];
+var deck = [];
+
+
+function shuffle(deck) {
+  var m = deck.length, t, i;
+  
+  while(m) {
+    i = Math.floor(Math.random() * m--);
+    t = deck[m];
+    deck[m] = deck[i];
+    deck[i] - t;
+  }
+  document.getElementById("demo").innerHTML=deck.toString();
+  return deck;
+}
+
+
+
+/*var test = "Now you see me...";
+var count = 0;
+
 function hide() {
 document.getElementById('myButton').style.visibility="hidden";
 document.getElementById('secondaryButton').style.visibility="visible";
@@ -17,6 +38,7 @@ function show() {
 document.getElementById('secondaryButton').style.visibility="hidden";
 document.getElementById('myButton').style.visibility="visible";
 }
+*/
 </script>
 </head>
 
@@ -24,12 +46,8 @@ document.getElementById('myButton').style.visibility="visible";
 
 <h1>My Web Page</h1>
 
-<p id="demo">Testing</p>
-<p id="demo2">Second test</p>
-
+<p id="ShufflingText">Score for shuffling = </p><p id="demo"> </p>
 <button type="button" onclick="hide2()">Try it</button>
-<input id="myButton" style="visibility:visible" type="button" value=test onclick="hide()">
-<input id="secondaryButton" style="visibility:hidden" type="button" value="now you don't!" onclick="show()">
-
+<input id="shuffle" type="button" value="Shuffle!" onclick="shuffle(initialDeck)">
 </body>
 </html> 
