@@ -9,8 +9,9 @@ function draw(deck){
   // Return first 5 cards from the given deck
   var hand = [];
   hand.push() = deck.pop();
-  document.getElementById("deckTest").innerHTML=deck.toString();
+  document.getElementById("deckTest").innerHTML=hand.toString();
   document.getElementById("handTest").innerHTML=deck.toString();
+  return hand;
 }
   
 function shuffle(deck) {
@@ -54,8 +55,8 @@ document.getElementById('myButton').style.visibility="visible";
 <h1>My Web Page</h1>
 
 <p id="ShufflingText">Score for shuffling = </p><p id="demo"> </p>
-<p id="deckTest"></p>
-<p id="handTest"></p>
+<p id="deckTest">-</p>
+<p id="handTest">-</p>
 <button type="button" onclick="hide2()">Try it</button>
 <input id="shuffle" type="button" value="Shuffle!" onclick="shuffle(initialDeck)">
 <input id="newHand" type="button" value="New Turn" onclick="draw(initialDeck)">
