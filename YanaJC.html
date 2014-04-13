@@ -14,32 +14,32 @@ function add(deck){
           element.setAttribute("type", "button");
           element.setAttribute("name", hand[hand.length -1]);
           element.setAttribute("value", hand[hand.length -1]);
-          element.setAttribute("onclick", "discard(this.value.toString())");
-          var foo = document.getElementById("fooBar");
-          foo.appendChild(element);
+          element.setAttribute("onclick", "discard(Number(this.name))");
+          var playableHand= document.getElementById("playableHand");
+          playableHand.appendChild(element);
         }
     }
-    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
-    document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();  
+    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
+    document.getElementById("handTest").innerHTML="Hand: " + hand;
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
 }
 
 function check(){
-    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck.toString();
-    document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();   
+    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
+    document.getElementById("handTest").innerHTML="Hand: " + hand;
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;    
 }
   
 function discard(card){
     document.getElementById("card").innerHTML="Card = " + card
-    document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card.toString());
-    document.getElementById("deckTest").innerHTML="Deck = " + initialDeck.toString();
+    document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card);
+    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(index, 1));
     }
     document.getElementById("handTest").innerHTML="Hand: " + hand;
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();  
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
    
 // indexOf not finding card in hand right now
 
@@ -54,7 +54,7 @@ function shuffle(deck) {
     deck[m] = deck[i];
     deck[i] = t;
   }
-  document.getElementById("deckTest").innerHTML=deck.toString();
+    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
   return deck;
 }
 
@@ -74,7 +74,7 @@ function shuffle(deck) {
 <input type="button" onclick="add(initialDeck)" value="Draw">
 <input type="button" onclick="discard(5)" value="Discardtest">
 <input type="button" onclick="check()" value="check">
-<span id="fooBar">Deck: </span>
+<span id="playableHand">Deck: </span>
 </form>
 </body>
 </html> 
