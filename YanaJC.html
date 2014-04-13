@@ -9,8 +9,7 @@ var drawCount = 5;
 function draw(deck){
   // Return first 5 cards from the given deck
   if(deck.length !==0){
-    while(deck.length !== 0 && i !== drawCount){
-      for(var i = 0; i < drawCount; i++) {
+      for(var i = 1; i < drawCount && deck.length !== 0; i++) {
         hand.push(deck.pop()); 
         }
     }
