@@ -14,7 +14,7 @@ function add(deck){
           element.setAttribute("type", "button");
           element.setAttribute("name", hand[hand.length -1]);
           element.setAttribute("value", hand[hand.length -1]);
-          element.setAttribute("onclick", "discard(this.name)");
+          element.setAttribute("onclick", "discard(this.value)");
           var foo = document.getElementById("fooBar");
           foo.appendChild(element);
         }
