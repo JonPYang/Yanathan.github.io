@@ -16,8 +16,6 @@ function add(deck){
           element.setAttribute("value", hand[hand.length -1]);
           element.setAttribute("onclick", "discard(Number(this.name))");
           document.getElementById("playableHand").appendChild(element);
-          var idName = element.id;
-          document.getElementById("ID").innerHTML="ID:" + idName
         }
     }
     document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
