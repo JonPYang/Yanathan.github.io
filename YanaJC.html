@@ -5,6 +5,7 @@
 var initialDeck = [1,2,3,4,5,6,7,8,9,10,11];
 var hand = [];
 var drawCount = 5;
+var discardPile = [];
 
 function draw(deck){
   // Return first 5 cards from the given deck
@@ -18,6 +19,15 @@ function draw(deck){
   return hand;
 }
   
+function discard(card){
+  discardPile.push(card)
+  var index = hand.indexOf(card)
+  hand.splice(index, 1)
+  document.getElementById("deckTest").innerHTML=deck.toString();
+  document.getElementById("handTest").innerHTML=hand.toString();
+  document.getElementById("discardPile").innerHTML=hand.toString();  
+}
+
 function shuffle(deck) {
   var m = deck.length, t, i;
   
@@ -61,6 +71,7 @@ document.getElementById('myButton').style.visibility="visible";
 <p id="demo"> </p>
 <p id="deckTest">DeckTest</p>
 <p id="handTest">HandTest</p>
+<p id="discardPile">Discard Pile</p>
 <button type="button" onclick="hide2()">Try it</button>
 <input id="shuffle" type="button" value="Shuffle!" onclick="shuffle(initialDeck)">
 <input id="newHand" type="button" value="New Turn" onclick="draw(initialDeck)">
