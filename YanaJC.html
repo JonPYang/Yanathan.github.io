@@ -33,12 +33,12 @@ function check(){
   
 function discard(card){
     document.getElementById("card").innerHTML="Card = " + card
-    document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card);
+    document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card.toString());
     document.getElementById("deckTest").innerHTML="Deck = " + initialDeck.toString();
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(index, 1));
     }
-    document.getElementById("handTest").innerHTML="Hand: " + hand.toString();
+    document.getElementById("handTest").innerHTML="Hand: " + hand;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile.toString();  
    
 // indexOf not finding card in hand right now
