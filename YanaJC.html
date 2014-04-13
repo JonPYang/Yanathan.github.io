@@ -12,7 +12,7 @@ function add(deck){
         hand.push(deck.pop()); 
           var element = document.createElement("input");
           element.setAttribute("type", "button");
-          element.setAttribute("Id", hand[-1]);
+          element.setAttribute("Id", hand[hand.length -1]);
           element.setAttribute("name", hand[hand.length -1]);
           element.setAttribute("value", hand[hand.length -1]);
           element.setAttribute("onclick", "discard(Number(this.name))");
@@ -38,7 +38,8 @@ function discard(card){
     document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card);
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(hand.indexOf(card), 1));
-        document.getElementById("playableHand").removeChild();
+        var cardElement = document.getElementById(card)
+        cardElement.parentNode.removeChild(cardElement);
     }
     document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
