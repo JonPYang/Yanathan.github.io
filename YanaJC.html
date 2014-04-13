@@ -21,6 +21,12 @@ function add(deck){
     }
     return hand;
 }
+
+function check(){
+    document.getElementById("deckTest").innerHTML=deck.toString();
+  document.getElementById("handTest").innerHTML=hand.toString();
+  document.getElementById("discardPile").innerHTML=discardPile.toString();  
+}
   
 function discard(card){
   discardPile.push(card);
@@ -58,6 +64,7 @@ function shuffle(deck) {
 <input type="button" onclick="shuffle(initialDeck)" value="Shuffle">
 <input type="button" onclick="add(initialDeck)" value="Draw">
 <input type="button" onclick="discard(5)" value="Discardtest">
+<input type="button" onclick="check()" value="check">
 <span id="fooBar">Deck: </span>
 </form>
 </body>
