@@ -16,6 +16,8 @@ function add(deck){
           element.setAttribute("value", hand[hand.length -1]);
           element.setAttribute("onclick", "discard(Number(this.name))");
           document.getElementById("playableHand").appendChild(element);
+          var idName = element.id;
+          document.getElementById("ID").innerHTML="ID:" + idName.concat(element.id);
         }
     }
     document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
@@ -31,13 +33,12 @@ function check(){
 }
   
 function discard(card){
-
+    document.getElementById("card").innerHTML="Card = " + card
+    document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card);
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(hand.indexOf(card), 1));
         document.getElementById("playableHand").removeChild();
     }
-    document.getElementById("card").innerHTML="Card = " + card
-    document.getElementById("Index Of").innerHTML="indexOf =" + hand.indexOf(card);
     document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
