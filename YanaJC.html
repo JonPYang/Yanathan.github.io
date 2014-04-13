@@ -12,6 +12,7 @@ function add(deck){
         hand.push(deck.pop()); 
           var element = document.createElement("input");
           element.setAttribute("type", "button");
+          element.setAttribute("Id", hand[hand.length -1]);
           element.setAttribute("name", hand[hand.length -1]);
           element.setAttribute("value", hand[hand.length -1]);
           element.setAttribute("onclick", "discard(Number(this.name))");
