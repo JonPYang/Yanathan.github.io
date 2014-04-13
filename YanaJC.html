@@ -23,10 +23,14 @@ function add(deck){
 
 function draw(deck){
   // Return first 5 cards from the given deck
-
+  if(deck.length !==0){
+      for(var i = 0; i < drawCount && deck.length !== 0; i++) {
+        hand.push(deck.pop()); 
+        }
+    }
   document.getElementById("deckTest").innerHTML=deck.toString();
   document.getElementById("handTest").innerHTML=hand.toString();
-  
+  return hand;
 }
   
 function discard(card){
