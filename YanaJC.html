@@ -7,7 +7,7 @@ var drawCount = 5;
 var discardPile = [];
 
 function add(deck){
-  var element = document.createElement("button");
+  var element = document.createElement("input");
   element.setAttribute("type", "button");
   element.setAttribute("name", "testname");
   element.setAttribute("value", "testvalue");
@@ -61,9 +61,9 @@ function shuffle(deck) {
 <p id="deckTest">DeckTest</p>
 <p id="handTest">HandTest</p>
 <p id="discardPile">Discard Pile</p>
-<button type="button" onclick="shuffle(initialDeck)">Shuffle!</button>
-<button type="button" onclick="draw(initialDeck)">Draw cards</button>
-<button type="button" onclick="add('12')">Add</button>
+<input type="button" onclick="shuffle(initialDeck)" value="Shuffle!">
+<input type="button" onclick="draw(initialDeck)" value="Draw!">
+<input type="button" onclick="add(1)" value="Add">
 <span id="fooBar">TestingTesting</span>
 </form>
 </body>
