@@ -29,9 +29,14 @@ function check(){
 }
   
 function discard(card){
-  discardPile.push(card);
-  var index = hand.indexOf(card);
-  hand.splice(index, 1);
+    if (hand.indexOf(card) > -1) {
+        var index = hand.indexOf(card);
+        discardPile.push(card);
+        hand.splice(index, 1)
+    }
+    else{
+        document.getElementById("discardPile").innerHTML="ERROR NO CARD FOUND";
+    }
   document.getElementById("deckTest").innerHTML=initialDeck.toString();
   document.getElementById("handTest").innerHTML=hand.toString();
   document.getElementById("discardPile").innerHTML=discardPile.toString();  
