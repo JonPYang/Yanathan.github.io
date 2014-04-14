@@ -32,12 +32,7 @@ function check(){
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;    
 }
   
-  
-function newTurn() {
-    for i in hand {
-        discard(i);
-    }
-}
+
 
 function reDeck(discardDeck){
     if(discardDeck) {
@@ -56,10 +51,7 @@ function discard(card){
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
-   
-// indexOf not finding card in hand right now
-
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile; 
 }
 
 function shuffle(deck) {
