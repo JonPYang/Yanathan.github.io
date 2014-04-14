@@ -32,9 +32,10 @@ function add(cards){
     }
     else if(cards){
         hand.unshift(cards);
+        var deckCard = document.createElement("input");
         deckCard.setAttribute("type", "button");
-        deckCard.setAttribute("Id", hand[0]);
-        deckCard.setAttribute("value", hand[0]);
+        deckCard.setAttribute("Id", cards);
+        deckCard.setAttribute("value", cards);
         deckCard.setAttribute("onclick", "discard(this.value)");
         document.getElementById("playableHand").appendChild(deckCard);
     }
