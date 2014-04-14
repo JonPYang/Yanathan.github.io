@@ -48,7 +48,7 @@ function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
         cardsToAdd = discardPile.slice(0);
-        playerDeck.concat(cardsToAdd);
+        playerDeck = playerDeck.concat(cardsToAdd);
         discardPile = [];
     }
         document.getElementById("concat").innerHTML="Concat: " + cardsToAdd
@@ -58,7 +58,8 @@ function reDeck(discardPile){
 
 function discard(card){
     if (hand.indexOf(card) > -1) {
-        discardPile.push(hand.splice(hand.indexOf(card), 1));
+        discardPile.push(hand[hand.indexOf(card)]);
+        hand.splice(hand.indexOf(card)]);
         var cardElement = document.getElementById(card);
         cardElement.parentNode.removeChild(cardElement);
     }
