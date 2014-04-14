@@ -29,6 +29,7 @@ function add(cards){
           deckCard.setAttribute("onclick", "discard(this.value)");
           document.getElementById("playableHand").appendChild(deckCard);
         }
+    }
     else if(cards){
         hand.unshift(card);
         deckCard.setAttribute("type", "button");
@@ -37,8 +38,9 @@ function add(cards){
         deckCard.setAttribute("onclick", "discard(this.value)");
         document.getElementById("playableHand").appendChild(deckCard);
     }
+    
     else document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
-    }
+    
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
