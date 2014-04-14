@@ -16,11 +16,10 @@ function buy(){
     buyable.setAttribute("value", "Province");
     buyable.setAttribute("onclick", "add(this.value)");
     document.getElementById("buyableCards").appendChild(buyable);
-    
 }
     
-function add(deck){
-    if(deck.length !==0){
+function add(cards){
+    if(cards.isArray()){
       for(var i = 0; i < drawCount && deck.length !== 0; i++) {
         hand.unshift(deck.shift()); 
           var deckCard = document.createElement("input");
@@ -30,6 +29,15 @@ function add(deck){
           deckCard.setAttribute("onclick", "discard(this.value)");
           document.getElementById("playableHand").appendChild(deckCard);
         }
+    else if(cards){
+        hand.unshift(card);
+        deckCard.setAttribute("type", "button");
+        deckCard.setAttribute("Id", hand[0]);
+        deckCard.setAttribute("value", hand[0]);
+        deckCard.setAttribute("onclick", "discard(this.value)");
+        document.getElementById("playableHand").appendChild(deckCard);
+    }
+    else document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
@@ -96,7 +104,8 @@ function shuffle(deck) {
 <p id="deckTest">Deck:</p>
 <p id="discardPile">Discard Pile:</p>
 <input type="button" onclick="newTurn()" value="New turn">
-<input type="button" onclick="buy()" value="Province"
+<input type="button" onclick="buy()" value="Province">
+<p id="errorCatch"></p>
 <span id="playableHand">Hand: </span>
 <span id="buyableCards">Buy:</span>
 </form>
