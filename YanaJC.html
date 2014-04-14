@@ -5,6 +5,7 @@ var playerDeck = [1,2,3,4,5,6,7,8,9,10,11];
 var hand = [];
 var drawCount = 5;
 var discardPile = [];
+var cardsToAdd;
 /* TODO: On new turn, discard all cards in hand, draw if there are enough cards to draw,
 check if there are cards in discard pile to move to deck and draw, end drawing if both conditions fail.*/
 
@@ -46,7 +47,7 @@ function newTurn() {
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
-        var cardsToAdd = discardPile.slice(0);
+        cardsToAdd = discardPile.slice(0);
         playerDeck.concat(cardsToAdd);
         discardPile = [];
     }
