@@ -14,8 +14,8 @@ function add(deck){
         hand.unshift(deck.shift()); 
           var element = document.createElement("input");
           element.setAttribute("type", "button");
-          element.setAttribute("Id", hand[hand.length -1]);
-          element.setAttribute("value", hand[hand.length -1]);
+          element.setAttribute("Id", hand[0]);
+          element.setAttribute("value", hand[0]);
           element.setAttribute("onclick", "discard(Number(this.value))");
           document.getElementById("playableHand").appendChild(element);
         }
