@@ -4,19 +4,31 @@
 var playerDeck = ["copper","copper","copper","copper","copper","silver","silver"], hand = [], discardPile = [];
 var drawCount = 5;
 
-/* TODO: On new turn, discard all cards in hand, draw if there are enough cards to draw,
-check if there are cards in discard pile to move to deck and draw, end drawing if both conditions fail.*/
+/* TODO: 
+Create buttons to add named cards into hand. 
+Create money, draw, action values to cards and players
+Work in multiple players*/
 
+
+function buy(){
+    var buyable = document.createElement("input");
+    buyable.setAttribute("type", "button");
+    buyable.setAttribute("value", "Province")
+    buyable.setAttribute("onclick", "add(this.value)");
+    document.getElementById("buyableCards").appendChild(buyable);
+    
+}
+    
 function add(deck){
     if(deck.length !==0){
       for(var i = 0; i < drawCount && deck.length !== 0; i++) {
         hand.unshift(deck.shift()); 
-          var element = document.createElement("input");
-          element.setAttribute("type", "button");
-          element.setAttribute("Id", hand[0]);
-          element.setAttribute("value", hand[0]);
-          element.setAttribute("onclick", "discard(this.value)");
-          document.getElementById("playableHand").appendChild(element);
+          var deckCard = document.createElement("input");
+          deckCard.setAttribute("type", "button");
+          deckCard.setAttribute("Id", hand[0]);
+          deckCard.setAttribute("value", hand[0]);
+          deckCard.setAttribute("onclick", "discard(this.value)");
+          document.getElementById("playableHand").appendChild(deckCard);
         }
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
@@ -84,8 +96,9 @@ function shuffle(deck) {
 <p id="deckTest">Deck:</p>
 <p id="discardPile">Discard Pile:</p>
 <input type="button" onclick="newTurn()" value="New turn">
-
+<input type="button" onclick="buy()" value="Province"
 <span id="playableHand">Hand: </span>
+<span id="buyableCards">Buy:</span>
 </form>
 </body>
 </html> 
