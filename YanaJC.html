@@ -40,14 +40,14 @@ function newTurn() {
     if (playerDeck.length > drawCount) {
         add(playerDeck);
     } else {
-        reDeck(discardDeck);
+        reDeck(discardPile);
         add(playerDeck);
     }
 }
 
-function reDeck(discardDeck){
+function reDeck(discardPile){
     if(discardDeck) {
-        shuffle(discardDeck);
+        shuffle(discardPile);
         playerDeck.concat(discardDeck.splice(discardDeck.length))
     }
     return playerDeck;
