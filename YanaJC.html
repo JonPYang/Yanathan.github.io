@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <script>
-var playerDeck = [1,2,3,4,5,6,7,8,9,10,11];
+var playerDeck = ["copper","copper","copper","copper","copper","silver","silver"];
 var hand = [];
 var drawCount = 5;
 var discardPile = [];
@@ -17,7 +17,7 @@ function add(deck){
           element.setAttribute("type", "button");
           element.setAttribute("Id", hand[0]);
           element.setAttribute("value", hand[0]);
-          element.setAttribute("onclick", "discard(Number(this.value))");
+          element.setAttribute("onclick", "discard(this.value)");
           document.getElementById("playableHand").appendChild(element);
         }
     }
