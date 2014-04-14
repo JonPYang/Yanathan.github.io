@@ -49,6 +49,7 @@ function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
         var spliced = discardPile.splice(0)
+        playerDeck.concat(spliced);
     }
     document.getElementById("concatTest").innerHTML="concat" + spliced
     return playerDeck;
