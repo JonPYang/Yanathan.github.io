@@ -48,10 +48,8 @@ function newTurn() {
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
-        var spliced = discardPile.splice(0)
-        playerDeck.concat(spliced);
+        playerDeck = playerDeck.concat(discardPile.splice(0))
     }
-    document.getElementById("concatTest").innerHTML="concat" + spliced
         document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
     return playerDeck;
