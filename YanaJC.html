@@ -34,7 +34,9 @@ function check(){
   
   
 function newTurn() {
-    
+    for i in hand {
+        discard(i);
+    }
 }
 
 function reDeck(discardDeck){
@@ -85,7 +87,7 @@ function shuffle(deck) {
 
 <input type="button" onclick="shuffle(playerDeck)" value="Shuffle">
 <input type="button" onclick="add(playerDeck)" value="Draw">
-<input type="button" onclick="newTurn()" value"New turn">
+<input type="button" onclick="newTurn()" value="New turn">
 
 <span id="playableHand">Deck: </span>
 </form>
