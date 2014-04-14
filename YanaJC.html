@@ -48,7 +48,7 @@ function newTurn() {
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
-        playerDeck.concat(discardPile.splice(discardPile.length))
+        playerDeck.concat(discardPile.splice(0))
     }
     return playerDeck;
 }
