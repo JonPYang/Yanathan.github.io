@@ -19,7 +19,7 @@ function buy(){
 }
     
 function add(cards){
-    if(cards.isArray()){
+    if(cards instanceof Array){
       for(var i = 0; i < drawCount && deck.length !== 0; i++) {
         hand.unshift(deck.shift()); 
           var deckCard = document.createElement("input");
