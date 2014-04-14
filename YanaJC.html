@@ -36,6 +36,7 @@ function check(){
 function newTurn() {
     
 }
+
 function reDeck(discardDeck){
     if(discardDeck) {
         playerDeck = discardDeck.slice(0);
@@ -48,7 +49,7 @@ function reDeck(discardDeck){
 function discard(card){
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(hand.indexOf(card), 1));
-        var cardElement = document.getElementById(card)
+        var cardElement = document.getElementById(card);
         cardElement.parentNode.removeChild(cardElement);
     }
     document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
@@ -68,7 +69,7 @@ function shuffle(deck) {
     deck[m] = deck[i];
     deck[i] = t;
   }
-    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
+    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
   return deck;
 }
 
@@ -84,7 +85,7 @@ function shuffle(deck) {
 
 <input type="button" onclick="shuffle(playerDeck)" value="Shuffle">
 <input type="button" onclick="add(playerDeck)" value="Draw">
-<input type="button" onclick="" value"New turn">
+<input type="button" onclick="newTurn()" value"New turn">
 
 <span id="playableHand">Deck: </span>
 </form>
