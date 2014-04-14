@@ -20,7 +20,7 @@ function buy(){
     
 function add(cards){
     if(cards instanceof Array){
-      for(var i = 0; i < drawCount && deck.length !== 0; i++) {
+      for(var i = 0; i < drawCount && cards.length !== 0; i++) {
         hand.unshift(cards.shift()); 
           var deckCard = document.createElement("input");
           deckCard.setAttribute("type", "button");
