@@ -20,14 +20,14 @@ function add(deck){
           document.getElementById("playableHand").appendChild(element);
         }
     }
-    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
+    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
 }
 
 function check(){
-    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
+    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;    
 }
@@ -52,7 +52,7 @@ function discard(card){
         var cardElement = document.getElementById(card);
         cardElement.parentNode.removeChild(cardElement);
     }
-    document.getElementById("deckTest").innerHTML="Deck: " + initialDeck;
+    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("handTest").innerHTML="Hand: " + hand;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
    
