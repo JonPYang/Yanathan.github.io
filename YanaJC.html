@@ -32,7 +32,12 @@ function check(){
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;    
 }
   
-
+  
+function newTurn() {
+    for (i in hand) {
+        discard(i);
+    }
+}
 
 function reDeck(discardDeck){
     if(discardDeck) {
