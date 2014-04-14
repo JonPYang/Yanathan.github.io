@@ -11,7 +11,7 @@ check if there are cards in discard pile to move to deck and draw, end drawing i
 function add(deck){
     if(deck.length !==0){
       for(var i = 0; i < drawCount && deck.length !== 0; i++) {
-        hand.push(deck.pop()); 
+        hand.unshift(deck.shift()); 
           var element = document.createElement("input");
           element.setAttribute("type", "button");
           element.setAttribute("Id", hand[hand.length -1]);
