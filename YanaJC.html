@@ -47,7 +47,7 @@ function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
         var cardsToAdd = discardPile.slice(0);
-        playerDeck = playerDeck.concat(cardsToAdd);
+        playerDeck.concat(cardsToAdd);
         discardPile = [];
     }
         document.getElementById("concat").innerHTML="Concat: " + cardsToAdd
