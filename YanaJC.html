@@ -48,8 +48,9 @@ function newTurn() {
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
-        playerDeck.concat(discardPile.splice(0))
+        var spliced = discardPile.splice(0)
     }
+    document.getElementById("concatTest").innerHTML="concat" + spliced
     return playerDeck;
 }
 
@@ -86,7 +87,7 @@ function shuffle(deck) {
 <p id="deckTest">Deck:</p>
 <p id="handTest">Hand:</p>
 <p id="discardPile">Discard Pile:</p>
-
+<p id="concatTest">concat</p>
 <input type="button" onclick="shuffle(playerDeck)" value="Shuffle">
 <input type="button" onclick="add(playerDeck)" value="Draw">
 <input type="button" onclick="newTurn()" value="New turn">
