@@ -58,7 +58,7 @@ function reDeck(discardPile){
 function discard(card){
     if (hand.indexOf(card) > -1) {
         discardPile.shift(hand[hand.indexOf(card)]);
-        hand.splice(hand.indexOf(card));
+        hand.splice(hand.indexOf(card), 1);
         var cardElement = document.getElementById(card);
         cardElement.parentNode.removeChild(cardElement);
     }
