@@ -21,7 +21,7 @@ function buy(){
 function add(cards){
     if(cards instanceof Array){
       for(var i = 0; i < drawCount && deck.length !== 0; i++) {
-        hand.unshift(deck.shift()); 
+        hand.unshift(cards.shift()); 
           var deckCard = document.createElement("input");
           deckCard.setAttribute("type", "button");
           deckCard.setAttribute("Id", hand[0]);
@@ -31,7 +31,7 @@ function add(cards){
         }
     }
     else if(cards){
-        hand.unshift(card);
+        hand.unshift(cards);
         deckCard.setAttribute("type", "button");
         deckCard.setAttribute("Id", hand[0]);
         deckCard.setAttribute("value", hand[0]);
