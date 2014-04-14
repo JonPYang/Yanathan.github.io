@@ -26,7 +26,7 @@ function add(cards){
           deckCard.setAttribute("type", "button");
           deckCard.setAttribute("Id", hand[0]);
           deckCard.setAttribute("value", hand[0]);
-          deckCard.setAttribute("onclick", "discard(this.value)");
+          deckCard.setAttribute("onclick", "discardFromHand(this.value)");
           document.getElementById("playableHand").appendChild(deckCard);
         }
     }
@@ -36,7 +36,7 @@ function add(cards){
         deckCard.setAttribute("type", "button");
         deckCard.setAttribute("Id", cards);
         deckCard.setAttribute("value", cards);
-        deckCard.setAttribute("onclick", "discard(this.value)");
+        deckCard.setAttribute("onclick", "discardFromHand(this.value)");
         document.getElementById("playableHand").appendChild(deckCard);
     }
     
@@ -55,7 +55,7 @@ function check(){
   
 function newTurn() {
     while(hand.length > 0) {
-        discard(hand[0]);
+        discardFromHand(hand[0]);
     }
     if (playerDeck.length > drawCount) {
         add(playerDeck);
@@ -74,7 +74,7 @@ function reDeck(discardPile){
     return playerDeck;
 }
 
-function discard(card){
+function discardFromHand(card){
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand[hand.indexOf(card)]);
         hand.splice(hand.indexOf(card), 1);
@@ -107,7 +107,7 @@ function shuffle(deck) {
 <p id="deckTest">Deck:</p>
 <p id="discardPile">Discard Pile:</p>
 <input type="button" onclick="newTurn()" value="New turn">
-<input type="button" onclick="buy()" value="Province">
+<input type="button" onclick="buy()" value="Buy Cards">
 <p id="errorCatch"></p>
 <span id="playableHand">Hand: </span>
 <span id="buyableCards">Buy:</span>
