@@ -37,13 +37,18 @@ function newTurn() {
     while(hand.length > 0) {
         discard(hand[0]);
     }
+    if (playerDeck.length > drawCount) {
+        add(playerDeck);
+    } else {
+        reDeck(discardDeck);
+        add(playerDeck);
+    }
 }
 
 function reDeck(discardDeck){
     if(discardDeck) {
-        playerDeck = discardDeck.slice(0);
-        discardDeck = [];
-        shuffle(playerDeck);
+        shuffle(discardDeck);
+        playerDeck.concat(discardDeck.splice(discardDeck.length))
     }
     return playerDeck;
 }
