@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <script>
-var initialDeck = [1,2,3,4,5,6,7,8,9,10,11];
+var playerDeck = [1,2,3,4,5,6,7,8,9,10,11];
 var hand = [];
 var drawCount = 5;
 var discardPile = [];
+/* TODO: On new turn, discard all cards in hand, draw if there are enough cards to draw,
+check if there are cards in discard pile to move to deck and draw, end drawing if both conditions fail.*/
 
 function add(deck){
     if(deck.length !==0){
@@ -30,6 +32,17 @@ function check(){
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;    
 }
   
+  
+function newTurn()
+function reDeck(discardDeck){
+    if(discardDeck) {
+        playerDeck = discardDeck.slice(0);
+        discardDeck = [];
+        shuffle(playerDeck);
+    }
+    return playerDeck;
+}
+
 function discard(card){
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand.splice(hand.indexOf(card), 1));
@@ -62,14 +75,14 @@ function shuffle(deck) {
 </head>
 <body>
 <form>
-<h1>My Web Page</h1>
 
 <p id="deckTest">Deck:</p>
 <p id="handTest">Hand:</p>
 <p id="discardPile">Discard Pile:</p>
 
-<input type="button" onclick="shuffle(initialDeck)" value="Shuffle">
-<input type="button" onclick="add(initialDeck)" value="Draw">
+<input type="button" onclick="shuffle(playerDeck)" value="Shuffle">
+<input type="button" onclick="add(playerDeck)" value="Draw">
+<input type="button" onclick="" value"New turn">
 
 <span id="playableHand">Deck: </span>
 </form>
