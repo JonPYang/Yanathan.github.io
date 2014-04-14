@@ -46,8 +46,10 @@ function newTurn() {
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
-        playerDeck = playerDeck.concat(discardPile.splice(0))
+        var cardsToAdd = discardPile.splice(0)
+        playerDeck = playerDeck.concat(cardsToAdd)
     }
+        document.getElementById("concat").innerHTML="Concat: " + cardsToAdd
         document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     return playerDeck;
 }
