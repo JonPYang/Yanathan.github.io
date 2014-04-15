@@ -91,7 +91,9 @@ function newTurn() {
   }
   removeCards.innerHTML="Buy: ";
   buyCount = 1;
-      document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("displayActions").innerHTML=actionCount;
+    document.getElementById("displayBuys").innerHTML=buyCount;
 }
 
 function reDeck(discardPile){
