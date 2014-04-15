@@ -82,9 +82,9 @@ function newTurn() {
         reDeck(discardPile);
         add(playerDeck);
     }
-    var removeCards = document.getElementById("buyableCards").firstChild;
-  while(removeCards){
-     removeCards.parentNode.removeChild(removeCards);
+    var removeCards = document.getElementById("buyableCards");
+  while(removeCards.firstChild){
+     removeCards.removeChild(removeCards.firstChild);
   }
 }
 
