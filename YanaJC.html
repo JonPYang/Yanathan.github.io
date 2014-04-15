@@ -31,6 +31,7 @@ function buy(){
     document.getElementById("buyableCards").appendChild(buyable);
     }
     buyCount--;
+    document.getElementById("displayMoney").innerHTML=moneyCount;
     }
 }
     
@@ -90,6 +91,7 @@ function newTurn() {
   }
   removeCards.innerHTML="Buy: ";
   buyCount = 1;
+      document.getElementById("displayMoney").innerHTML=moneyCount;
 }
 
 function reDeck(discardPile){
@@ -143,10 +145,10 @@ function shuffle(deck) {
 <p id="buysCountId">Buys: <span id="displayBuys"></span></p>
 <input type="button" onclick="newTurn()" value="New turn">
 <input type="button" onclick="buy()" value="Buy Cards">
-
+<p></p>
 <span id="playableHand">Hand: </span>
 <p></p>
-<span id="buyableCards">Buy:</span>
+<span id="buyableCards">Buyable Cards:</span>
 <p></p>
 <p id="errorCatch"></p>
 </form>
