@@ -2,14 +2,14 @@
 <html>
 <script>
 var playerDeck = ["copper","copper","copper","copper","copper","silver","silver"], hand = [], discardPile = [];
-var drawCount = 5;
+var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 1;
 var copper = {name:'copper', cardType:'money', money:1, cost:0}, silver = {name:'silver', cardType:'money', money:2, cost:3}, gold = {name:'gold', cardType:'money', money:3, cost:6};
 var chapel = {cardType:'action', cost:2};
 var moat = {cardType:'actionReaction', card:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
 var village = {cardType:'action', cost:3, card:1, actions:2};
 var buyableCards = [copper, silver, gold]
-var buyCount = 1;
+
 
 
 /* TODO: 
@@ -138,12 +138,15 @@ function shuffle(deck) {
 
 <p id="deckTest">Deck:</p>
 <p id="discardPile">Discard Pile:</p>
+<p id="moneyCountId">"Money: " + moneyCount</p>
 <input type="button" onclick="newTurn()" value="New turn">
 <input type="button" onclick="buy()" value="Buy Cards">
-<p id="errorCatch"></p>
+
 <span id="playableHand">Hand: </span>
 <p></p>
 <span id="buyableCards">Buy:</span>
+<p></p>
+<p id="errorCatch"></p>
 </form>
 </body>
 </html> 
