@@ -84,8 +84,10 @@ function newTurn() {
   
   var removeBuyablesList = document.getElementsByName("PurchasableCards");
   var removeBuyables = document.getElementById("buyableCards");
-  for (var i in removeBuyablesList)
-        removeBuyables.parentNode.removeChild(removeBuyablesList[i]);
+  document.getElementById("errorCatch").innerHTML=removeBuyablesList;
+  //for (var i in removeBuyablesList)
+      //  removeBuyables.parentNode.removeChild(removeBuyablesList[i]);
+      
 }
 
 function reDeck(discardPile){
