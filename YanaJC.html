@@ -82,7 +82,7 @@ function newTurn() {
         add(playerDeck);
     }
   
-  var removeBuyablesList = getElementsByName("PurchasableCards");
+  var removeBuyablesList = document.getElementsByName("PurchasableCards");
   var removeBuyables = document.getElementById("buyableCards");
   for (var i in removeBuyablesList)
         removeBuyables.parentNode.removeChild(removeBuyablesList[i]);
