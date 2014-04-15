@@ -86,7 +86,7 @@ function newTurn() {
         add(playerDeck);
     }
     removeBuyableCards();
-    removeCards.innerHTML="Buy: ";
+
     buyCount = 1;
     document.getElementById("displayMoney").innerHTML=moneyCount;
     document.getElementById("displayActions").innerHTML=actionCount;
@@ -95,8 +95,9 @@ function newTurn() {
 
 function removeBuyableCards(){
         var removeCards = document.getElementById("buyableCards");
-  while(removeCards.firstChild){
-     removeCards.removeChild(removeCards.firstChild);
+        while(removeCards.firstChild){
+        removeCards.removeChild(removeCards.firstChild);
+         removeCards.innerHTML="Buy: ";
 }
 }
 function reDeck(discardPile){
