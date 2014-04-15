@@ -20,6 +20,7 @@ Work in multiple players*/
 
 function buy(){
     //var buyableCardArray = listOfBuyableCards()
+    /*
     for (var i in buyableCards) {
     var buyable = document.createElement("input");
     buyable.setAttribute("type", "button");
@@ -28,6 +29,14 @@ function buy(){
     buyable.setAttribute("onclick", "add(this.value)");
     document.getElementById("buyableCards").appendChild(buyable);
     }
+    */
+        var buyable = document.createElement("input");
+    buyable.setAttribute("type", "button");
+    buyable.setAttribute("name", "PurchasableCards");
+    buyable.setAttribute("value", 'copper');
+    buyable.setAttribute("onclick", "add(this.value)");
+    document.getElementById("buyableCards").appendChild(buyable);
+    
 }
     
 // TODO: Ask for a selection of cards in the game, return selected cards as array
