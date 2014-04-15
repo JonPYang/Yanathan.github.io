@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <script>
 var playerDeck = ["copper","copper","copper","copper","copper","silver","silver"], hand = [], discardPile = [];
@@ -21,17 +22,17 @@ Work in multiple players*/
 function buy(){
     //var buyableCardArray = listOfBuyableCards()
     if(buyCount >= 1){
-    for (var i in buyableCards) {
-    var buyable = document.createElement("input");
-    buyable.setAttribute("type", "button");
-    buyable.setAttribute("name", "PurchasableCards");
-    buyable.setAttribute("value", buyableCards[i].name);
-    buyable.setAttribute("Id", buyableCards[i].name);
-    buyable.setAttribute("onclick", "discardFromBuy(this.value)");
-    document.getElementById("buyableCards").appendChild(buyable);
-    }
-    buyCount--;
-    document.getElementById("displayBuys").innerHTML=buyCount;
+        for (var i in buyableCards) {
+            var buyable = document.createElement("input");
+            buyable.setAttribute("type", "button");
+            buyable.setAttribute("name", "PurchasableCards");
+            buyable.setAttribute("value", buyableCards[i].name);
+            buyable.setAttribute("Id", buyableCards[i].name);
+            buyable.setAttribute("onclick", "discardFromBuy(this.value)");
+            document.getElementById("buyableCards").appendChild(buyable);
+        }
+        buyCount--;
+        document.getElementById("displayBuys").innerHTML=buyCount;
     }
 }
     
@@ -43,13 +44,13 @@ function listOfBuyableCards(){
 function add(cards){
     if(cards instanceof Array){
       for(var i = 0; i < drawCount && cards.length !== 0; i++) {
-        hand.unshift(cards.shift()); 
-          var deckCard = document.createElement("input");
-          deckCard.setAttribute("type", "button");
-          deckCard.setAttribute("Id", hand[0]);
-          deckCard.setAttribute("value", hand[0]);
-          deckCard.setAttribute("onclick", "discardFromHand(this.value)");
-          document.getElementById("playableHand").appendChild(deckCard);
+            hand.unshift(cards.shift()); 
+            var deckCard = document.createElement("input");
+            deckCard.setAttribute("type", "button");
+            deckCard.setAttribute("Id", hand[0]);
+            deckCard.setAttribute("value", hand[0]);
+            deckCard.setAttribute("onclick", "discardFromHand(this.value)");
+            document.getElementById("playableHand").appendChild(deckCard);
         }
     }
     else if(cards){
@@ -62,50 +63,45 @@ function add(cards){
         document.getElementById("playableHand").appendChild(deckCard);
     }
     
-    else document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
+    else 
+        document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
     
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
 }
 
-function check(){
-    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;    
-}
-  
-  
 function newTurn() {
     while(hand.length > 0) {
         discardFromHand(hand[0]);
     }
     if (playerDeck.length > drawCount) {
         add(playerDeck);
-    } else {
+    } 
+    else {
         reDeck(discardPile);
         add(playerDeck);
     }
     removeBuyableCards();
-
     buyCount = 1;
     document.getElementById("displayMoney").innerHTML=moneyCount;
     document.getElementById("displayActions").innerHTML=actionCount;
     document.getElementById("displayBuys").innerHTML=buyCount;
 }
 
-function removeBuyableCards(){
-        var removeCards = document.getElementById("buyableCards");
-        while(removeCards.firstChild){
+function removeBuyableCards() {
+    var removeCards = document.getElementById("buyableCards");
+    while(removeCards.firstChild) {
         removeCards.removeChild(removeCards.firstChild);
-         removeCards.innerHTML="Buy: ";
-}
+        removeCards.innerHTML="Buy: ";
+    }
 }
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
         playerDeck = playerDeck.concat(discardPile.splice(0));
     }
-        document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
+    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     return playerDeck;
 }
 
@@ -127,16 +123,15 @@ function discardFromBuy(card){
 }
 
 function shuffle(deck) {
-  var m = deck.length, t, i;
-  
-  while(m) {
-    i = Math.floor(Math.random() * m--);
-    t = deck[m];
-    deck[m] = deck[i];
-    deck[i] = t;
-  }
+    var m = deck.length, t, i;
+    while(m) {
+        i = Math.floor(Math.random() * m--);
+        t = deck[m];
+        deck[m] = deck[i];
+        deck[i] = t;
+        }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
-  return deck;
+    return deck;
 }
 
 </script>
@@ -150,13 +145,19 @@ function shuffle(deck) {
 <p id="moneyCountId">Money: <span id="displayMoney"></span></p>
 <p id="actionCountId">Actions: <span id="displayActions"></span></p>
 <p id="buysCountId">Buys: <span id="displayBuys"></span></p>
-<input type="button" onclick="newTurn()" value="New turn">
-<input type="button" onclick="buy()" value="Buy Cards">
+    <input type="button" onclick="newTurn()" value="New turn">
+    <input type="button" onclick="buy()" value="Buy Cards">
+    
 <p></p>
+
 <span id="playableHand">Hand: </span>
+
 <p></p>
+
 <span id="buyableCards">Buyable Cards:</span>
+
 <p></p>
+
 <p id="errorCatch"></p>
 </form>
 </body>
