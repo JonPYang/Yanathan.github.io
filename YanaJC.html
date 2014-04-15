@@ -9,7 +9,7 @@ var moat = {cardType:'actionReaction', card:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
 var village = {cardType:'action', cost:3, card:1, actions:2};
 var buyableCards = [copper, silver, gold]
-
+var buyCount = 1;
 
 
 /* TODO: 
@@ -20,7 +20,7 @@ Work in multiple players*/
 
 function buy(){
     //var buyableCardArray = listOfBuyableCards()
-
+    if(buyCount >= 1){
     for (var i in buyableCards) {
     var buyable = document.createElement("input");
     buyable.setAttribute("type", "button");
@@ -29,6 +29,8 @@ function buy(){
     buyable.setAttribute("Id", buyableCards[i].name);
     buyable.setAttribute("onclick", "add(this.value)");
     document.getElementById("buyableCards").appendChild(buyable);
+    }
+    buyCount--;
     }
 }
     
@@ -87,6 +89,7 @@ function newTurn() {
      removeCards.removeChild(removeCards.firstChild);
   }
   removeCards.innerHTML="Buy: ";
+  buyCount = 1;
 }
 
 function reDeck(discardPile){
