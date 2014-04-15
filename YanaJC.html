@@ -13,7 +13,7 @@ Work in multiple players*/
 function buy(){
     var buyable = document.createElement("input");
     buyable.setAttribute("type", "button");
-    buyable.setAttribute("value", "Province");
+    buyable.setAttribute("name", "buyableCard");
     buyable.setAttribute("onclick", "add(this.value)");
     document.getElementById("buyableCards").appendChild(buyable);
 }
