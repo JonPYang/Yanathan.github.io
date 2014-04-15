@@ -26,6 +26,7 @@ function buy(){
     buyable.setAttribute("type", "button");
     buyable.setAttribute("name", "PurchasableCards");
     buyable.setAttribute("value", buyableCards[i].name);
+    buyable.setAttribute("Id", buyableCards[i].name);
     buyable.setAttribute("onclick", "add(this.value)");
     document.getElementById("buyableCards").appendChild(buyable);
     }
@@ -81,13 +82,9 @@ function newTurn() {
         reDeck(discardPile);
         add(playerDeck);
     }
-  
-  var removeBuyablesList = document.getElementsByName("PurchasableCards");
-  var removeBuyables = document.getElementById("buyableCards");
-  document.getElementById("errorCatch").innerHTML=removeBuyablesList.toString();
-  //for (var i in removeBuyablesList)
-      //  removeBuyables.parentNode.removeChild(removeBuyablesList[i]);
-      
+  while(var removeCards = getElementById("buyableCards").firstChild){
+     removeCards.parentNode.removeChild(removeCards);
+  }
 }
 
 function reDeck(discardPile){
