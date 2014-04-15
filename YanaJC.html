@@ -3,6 +3,13 @@
 <script>
 var playerDeck = ["copper","copper","copper","copper","copper","silver","silver"], hand = [], discardPile = [];
 var drawCount = 5;
+var buyableCards = [copper, silver, gold]
+
+var copper = {cardType:'money', money:1, cost:0}, silver = {cardType:'money', money:2, cost:3}, gold = {cardType:'money', money:3, cost:6};
+var chapel = {cardType:'action', cost:2};
+var moat = {cardType:'actionReaction', card:2, cost:2};
+var bureaucrat = {cardType:'actionAttack', cost:4};
+var village = {cardType:'action', cost:3, card:1, actions:2};
 
 /* TODO: 
 Create buttons to add named cards into hand. 
@@ -11,13 +18,22 @@ Work in multiple players*/
 
 
 function buy(){
+    //var buyableCardArray = listOfBuyableCards()
+    for (var i in buyableCards) {
     var buyable = document.createElement("input");
     buyable.setAttribute("type", "button");
-    buyable.setAttribute("name", "buyableCard");
+    buyable.setAttribute("name", "PurchasableCards");
+    buyable.setAttribute("value", buyableCards[i])
     buyable.setAttribute("onclick", "add(this.value)");
     document.getElementById("buyableCards").appendChild(buyable);
+    }
 }
     
+// TODO: Ask for a selection of cards in the game, return selected cards as array
+function listOfBuyableCards(){
+    
+}
+
 function add(cards){
     if(cards instanceof Array){
       for(var i = 0; i < drawCount && cards.length !== 0; i++) {
