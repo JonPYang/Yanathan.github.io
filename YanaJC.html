@@ -138,7 +138,9 @@ function shuffle(deck) {
 
 <p id="deckTest">Deck:</p>
 <p id="discardPile">Discard Pile:</p>
-<p id="moneyCountId">"Money: " + moneyCount</p>
+<p id="moneyCountId">Money: <span id="displayMoney"></span></p>
+<p id="actionCountId">Money: <span id="displayActions"></span></p>
+<p id="buysCountId">Money: <span id="displayBuys"></span></p>
 <input type="button" onclick="newTurn()" value="New turn">
 <input type="button" onclick="buy()" value="Buy Cards">
 
@@ -149,4 +151,9 @@ function shuffle(deck) {
 <p id="errorCatch"></p>
 </form>
 </body>
+<script>
+    document.getElementById("moneyCountId").innerHTML=moneyCount;
+    document.getElementById("actionCountId").innerHTML=actionCount;
+    document.getElementById("buysCountId").innerHTML=buyCount;
+</script>
 </html> 
