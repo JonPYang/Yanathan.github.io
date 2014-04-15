@@ -93,8 +93,8 @@ function removeBuyableCards() {
     var removeCards = document.getElementById("buyableCards");
     while(removeCards.firstChild) {
         removeCards.removeChild(removeCards.firstChild);
-        removeCards.innerHTML="Buy: ";
     }
+    removeCards.innerHTML="Buy: ";
 }
 function reDeck(discardPile){
     if(discardPile) {
