@@ -127,6 +127,8 @@ function reDeck(discardPile){
 }
 
 function discardFromHand(card){
+    document.getElementById("1").innerHTML="indexOf= " + hand.indexOf(card.value)
+    document.getElementById("2").innerHTML="card.value= " + card.value
     if (hand.indexOf(card.value) > -1) {
         discardPile.push(hand[hand.indexOf(card.value)]);
         hand.splice(hand.indexOf(card.value), 1);
@@ -180,6 +182,9 @@ function shuffle(deck) {
 <p></p>
 
 <p id="errorCatch"></p>
+<p id="1"></p>
+<p id="2"></p>
+<p id="3"></p>
 </form>
 </body>
 <script>
