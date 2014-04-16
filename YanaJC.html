@@ -176,17 +176,19 @@ function discardFromHand(card){
 
 function discardFromBuy(card){
     discardPile.push(card);
-    function removeBuyableCards() {
-        var removeCards = document.getElementById("buyableCards");
-            while(removeCards.firstChild) {
-                removeCards.removeChild(removeCards.firstChild);
-            }
-            removeCards.innerHTML="Buy: ";
-        }
+    removeBuyableCards();
     deckReader();
     discardReader(); 
 }
 
+function removeBuyableCards() {
+    var removeCards = document.getElementById("buyableCards");
+    while(removeCards.firstChild) {
+        removeCards.removeChild(removeCards.firstChild);
+    }
+    removeCards.innerHTML="Buy: ";
+}
+        
 function shuffle(deck) {
     var m = deck.length, t, i;
     while(m) {
