@@ -36,7 +36,7 @@ Create log box for each action that occurs
 
 */
 function onCardPress(card){
-    document.getElementById("1").innerHTML="Card = " + card.value
+    document.getElementById("1").innerHTML="Card = " + card.name
     document.getElementById("2").innerHTML="Card.cardType = " + card.cardType
     if(card.cardType === 'money') {
         moneyCount += card.money;
@@ -53,6 +53,9 @@ function onCardPress(card){
     else {
         document.getElementById("errorCatch").innerHTML="ERROR, CARD TYPE NOT FOUND";         
     }
+    document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("displayActions").innerHTML=actionCount;
+    document.getElementById("displayBuys").innerHTML=buyCount;
     discardFromHand(card);
 }
 
@@ -64,8 +67,8 @@ function buy(){
             var buyable = document.createElement("input");
             buyable.setAttribute("type", "button");
             buyable.setAttribute("name", "PurchasableCards");
-            buyable.setAttribute("value", buyableCards[i].name);
-            buyable.setAttribute("Id", buyableCards[i].name);
+            buyable.value = buyableCards[i].name);
+            buyable.Id = buyableCards[i].name);
             buyable.setAttribute("onclick", "discardFromBuy(this.value)");
             document.getElementById("buyableCards").appendChild(buyable);
         }
@@ -89,7 +92,7 @@ function add(cards){
             deckCard.setAttribute("type", "button");
             deckCard.setAttribute("Id", currentCard.name);
             deckCard.setAttribute("value", currentCard.name);
-            deckCard.onClick = onCardPress(hand[0]);
+            deckCard.onclick = onCardPress(currentCard);
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
