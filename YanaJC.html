@@ -66,7 +66,7 @@ function add(cards){
             deckCard.setAttribute("type", "button");
             deckCard.setAttribute("Id", hand[0]);
             deckCard.setAttribute("value", hand[0]);
-            deckCard.setAttribute("onclick", "discardFromHand(this.value)");
+            deckCard.setAttribute("onclick", "discardFromHand(cards[i])");
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
@@ -86,6 +86,10 @@ function add(cards){
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
+}
+
+onCardPress(card){
+    
 }
 
 function newTurn() {
