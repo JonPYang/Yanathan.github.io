@@ -79,9 +79,7 @@ function listOfBuyableCards(){
     
 }
 
-function onClickHelper(cardName){
-    return "onCardPress("+cardName+")"
-}
+
 function add(cards){
     if(cards instanceof Array){
       for(var i = 0; i < drawCount && cards.length !== 0; i++) {
@@ -91,7 +89,7 @@ function add(cards){
             deckCard.setAttribute("type", "button");
             deckCard.setAttribute("Id", currentCard.name);
             deckCard.setAttribute("value", currentCard.name);
-            deckCard.setAttribute("onClick", onClickHelper(currentCard));
+            deckCard.onClick = onCardPress(hand[0]);
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
@@ -153,7 +151,7 @@ function discardFromHand(card){
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand[hand.indexOf(card)]);
         hand.splice(hand.indexOf(card), 1);
-        var cardElement = document.getElementById(card);
+        var cardElement = document.getElementById(card.name);
         cardElement.parentNode.removeChild(cardElement);
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
