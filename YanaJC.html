@@ -66,7 +66,7 @@ function add(cards){
             deckCard.setAttribute("type", "button");
             deckCard.setAttribute("Id", hand[0]);
             deckCard.setAttribute("value", hand[0]);
-            deckCard.setAttribute("onclick", "discardFromHand(cards[i])");
+            deckCard.setAttribute("onclick", "discardFromHand(this.value)");
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
@@ -127,12 +127,10 @@ function reDeck(discardPile){
 }
 
 function discardFromHand(card){
-    document.getElementById("1").innerHTML="indexOf= " + hand.indexOf(card.value)
-    document.getElementById("2").innerHTML="card.value= " + card.value
-    if (hand.indexOf(card.value) > -1) {
-        discardPile.push(hand[hand.indexOf(card.value)]);
-        hand.splice(hand.indexOf(card.value), 1);
-        var cardElement = document.getElementById(card.value);
+    if (hand.indexOf(card) > -1) {
+        discardPile.push(hand[hand.indexOf(card)]);
+        hand.splice(hand.indexOf(card), 1);
+        var cardElement = document.getElementById(card);
         cardElement.parentNode.removeChild(cardElement);
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
