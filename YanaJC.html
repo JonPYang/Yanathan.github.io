@@ -84,10 +84,11 @@ function add(cards){
       for(var i = 0; i < drawCount && cards.length !== 0; i++) {
             hand.unshift(cards.shift()); 
             var deckCard = document.createElement("input");
+            var currentCardName = hand[0].name;
             deckCard.setAttribute("type", "button");
-            deckCard.setAttribute("Id", hand[0].name);
-            deckCard.setAttribute("value", hand[0].name);
-            document.getElementById(hand[0].name).onClick = onCardPress(hand[0].name);
+            deckCard.setAttribute("Id", currentCardName);
+            deckCard.setAttribute("value", currentCardName);
+            deckCard.setAttribute("onClick", onCardPress(currentCardName));
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
