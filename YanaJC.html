@@ -67,8 +67,8 @@ function buy(){
             var buyable = document.createElement("input");
             buyable.setAttribute("type", "button");
             buyable.setAttribute("name", "PurchasableCards");
-            buyable.value = buyableCards[i].name);
-            buyable.Id = buyableCards[i].name);
+            buyable.value = buyableCards[i].name;
+            buyable.Id = buyableCards[i].name;
             buyable.setAttribute("onclick", "discardFromBuy(this.value)");
             document.getElementById("buyableCards").appendChild(buyable);
         }
