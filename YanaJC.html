@@ -3,9 +3,9 @@
 <html>
 <script>
 
-var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 1;
+var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
 var copper = {name:'copper', cardType:'money', money:1, cost:0}, silver = {name:'silver', cardType:'money', money:2, cost:3}, gold = {name:'gold', cardType:'money', money:3, cost:6};
-var estate = {name:'estate', cardType:'victoryPoint', money:0, cost:2}
+var estate = {name:'estate', cardType:'victoryCard', money:0, cost:2}
 var chapel = {cardType:'action', cost:2};
 var moat = {cardType:'actionReaction', card:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
@@ -35,6 +35,58 @@ Show cards on mouseover
 Create log box for each action that occurs
 
 */
+function newTurn() {
+    while(hand.length > 0) {
+        discardFromHand(hand[0]);
+    }
+    if (playerDeck.length > drawCount) {
+        add(playerDeck);
+    } 
+    else {
+        reDeck(discardPile);
+        add(playerDeck);
+    }
+    removeBuyableCards();
+    buyCount = 1;
+    moneyCount = 0;
+    document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("displayActions").innerHTML=actionCount;
+    document.getElementById("displayBuys").innerHTML=buyCount;
+}
+
+
+function add(cards){
+    if(cards instanceof Array){
+      for(var i = 0; i < drawCount && cards.length !== 0; i++) {
+            hand.unshift(cards.shift()); 
+            var deckCard = document.createElement("input");
+            var currentCard = hand[0];
+            deckCard.card = currentCard
+            deckCard.setAttribute("type", "button");
+            deckCard.setAttribute("Id", currentCard.name);
+            deckCard.setAttribute("value", currentCard.name);
+            deckCard.setAttribute("onclick", "onCardPress(this.card)");
+            document.getElementById("playableHand").appendChild(deckCard);
+        }
+    }
+    else if(cards){
+        hand.unshift(cards);
+        var deckCard = document.createElement("input");
+        deckCard.setAttribute("type", "button");
+        deckCard.setAttribute("Id", cards.name);
+        deckCard.setAttribute("value", cards.name);
+        document.getElementById(cards.name).onClick(cards);
+        document.getElementById("playableHand").appendChild(deckCard);
+    }
+    
+    else 
+        document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
+    
+    deckReader();
+    discardReader();
+    return hand;
+}
+
 function onCardPress(card){
     document.getElementById("1").innerHTML="Card = " + card.name
     document.getElementById("2").innerHTML="Card.cardType = " + card.cardType
@@ -48,6 +100,9 @@ function onCardPress(card){
         
     }
     else if(card.cardType === 'action') {
+        
+    }
+    else if(card.cardType === 'victoryCard') {
         
     }
     else {
@@ -85,38 +140,6 @@ function listOfBuyableCards(){
 }
 
 
-function add(cards){
-    if(cards instanceof Array){
-      for(var i = 0; i < drawCount && cards.length !== 0; i++) {
-            hand.unshift(cards.shift()); 
-            var deckCard = document.createElement("input");
-            var currentCard = hand[0];
-            deckCard.card = currentCard
-            deckCard.setAttribute("type", "button");
-            deckCard.setAttribute("Id", currentCard.name);
-            deckCard.setAttribute("value", currentCard.name);
-            deckCard.setAttribute("onclick", "onCardPress(this.card)");
-            document.getElementById("playableHand").appendChild(deckCard);
-        }
-    }
-    else if(cards){
-        hand.unshift(cards);
-        var deckCard = document.createElement("input");
-        deckCard.setAttribute("type", "button");
-        deckCard.setAttribute("Id", cards.name);
-        deckCard.setAttribute("value", cards.name);
-        document.getElementById(cards.name).onClick(cards);
-        document.getElementById("playableHand").appendChild(deckCard);
-    }
-    
-    else 
-        document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
-    
-    deckReader();
-    discardReader();
-    return hand;
-}
-
 function deckReader(){
         var deckReader = [];    
     for (var i in playerDeck){
@@ -133,23 +156,6 @@ function discardReader(){
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
 }
 
-function newTurn() {
-    while(hand.length > 0) {
-        discardFromHand(hand[0]);
-    }
-    if (playerDeck.length > drawCount) {
-        add(playerDeck);
-    } 
-    else {
-        reDeck(discardPile);
-        add(playerDeck);
-    }
-    removeBuyableCards();
-    buyCount = 1;
-    document.getElementById("displayMoney").innerHTML=moneyCount;
-    document.getElementById("displayActions").innerHTML=actionCount;
-    document.getElementById("displayBuys").innerHTML=buyCount;
-}
 
 
 
