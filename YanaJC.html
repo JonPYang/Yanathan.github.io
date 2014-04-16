@@ -85,8 +85,8 @@ function add(cards){
             hand.unshift(cards.shift()); 
             var deckCard = document.createElement("input");
             deckCard.setAttribute("type", "button");
-            deckCard.setAttribute("Id", hand[0]);
-            deckCard.setAttribute("value", hand[0]);
+            deckCard.setAttribute("Id", hand[0].name);
+            deckCard.setAttribute("value", hand[0].name);
             deckCard.setAttribute("onclick", "onCardPress(this)");
             document.getElementById("playableHand").appendChild(deckCard);
         }
@@ -95,8 +95,8 @@ function add(cards){
         hand.unshift(cards);
         var deckCard = document.createElement("input");
         deckCard.setAttribute("type", "button");
-        deckCard.setAttribute("Id", cards);
-        deckCard.setAttribute("value", cards);
+        deckCard.setAttribute("Id", cards.name);
+        deckCard.setAttribute("value", cards.name);
         deckCard.setAttribute("onclick", "discardFromHand(this.value)");
         document.getElementById("playableHand").appendChild(deckCard);
     }
