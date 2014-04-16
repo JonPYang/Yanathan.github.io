@@ -112,15 +112,26 @@ function add(cards){
     else 
         document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
     
-    var deckReader = [];    
-    for (var i in playerDeck){
-            deckReader.push(playerDeck[i].name);
-        }
-    document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
+    deckReader();
+    discardReader();
     return hand;
 }
 
+function deckReader(){
+        var deckReader = [];    
+    for (var i in playerDeck){
+            deckReader.push(playerDeck[i].name);
+        }
+        document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
+}
+
+function discardReader(){
+    var discardReader = [];
+    for (var i in discardPile){
+        discardReader.push(discardPile[i].name);
+    }
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
+}
 
 function newTurn() {
     while(hand.length > 0) {
@@ -147,7 +158,8 @@ function reDeck(discardPile){
         shuffle(discardPile);
         playerDeck = playerDeck.concat(discardPile.splice(0));
     }
-    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
+    deckReader();
+    discardReader();
     return playerDeck;
 }
 
@@ -158,8 +170,8 @@ function discardFromHand(card){
         var cardElement = document.getElementById(card.name);
         cardElement.parentNode.removeChild(cardElement);
     }
-    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile; 
+    deckReader();
+    discardReader();
 }
 
 function discardFromBuy(card){
@@ -171,7 +183,8 @@ function discardFromBuy(card){
             }
             removeCards.innerHTML="Buy: ";
         }
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile; 
+    deckReader();
+    discardReader(); 
 }
 
 function shuffle(deck) {
@@ -182,7 +195,8 @@ function shuffle(deck) {
         deck[m] = deck[i];
         deck[i] = t;
         }
-    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
+    deckReader();
+    discardReader();
     return deck;
 }
 
