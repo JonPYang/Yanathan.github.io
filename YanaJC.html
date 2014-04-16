@@ -49,11 +49,16 @@ function newTurn() {
     removeBuyableCards();
     buyCount = 1;
     moneyCount = 0;
+    updateAll();
+}
+
+function updateAll(){
     document.getElementById("displayMoney").innerHTML=moneyCount;
     document.getElementById("displayActions").innerHTML=actionCount;
     document.getElementById("displayBuys").innerHTML=buyCount;
+    deckReader();
+    discardReader();
 }
-
 
 function add(cards){
     if(cards instanceof Array){
@@ -82,8 +87,6 @@ function add(cards){
     else 
         document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
     
-    deckReader();
-    discardReader();
     return hand;
 }
 
@@ -108,9 +111,7 @@ function onCardPress(card){
     else {
         document.getElementById("errorCatch").innerHTML="ERROR, CARD TYPE NOT FOUND";         
     }
-    document.getElementById("displayMoney").innerHTML=moneyCount;
-    document.getElementById("displayActions").innerHTML=actionCount;
-    document.getElementById("displayBuys").innerHTML=buyCount;
+    updateAll();
     discardFromHand(card);
 }
 
@@ -130,13 +131,14 @@ function buyList(){
             document.getElementById("buyableCards").appendChild(buyable);
         }
         buyCount--;
-        document.getElementById("displayBuys").innerHTML=buyCount;
+    updateAll();
     }
 }
 
 function buy(card){
     moneyCount =- card.cost;
     discardFromBuy(card);
+    updateAll();
 }
 // TODO: Ask for a selection of cards in the game, return selected cards as array
 function listOfBuyableCards(){
@@ -168,8 +170,7 @@ function reDeck(discardPile){
         shuffle(discardPile);
         playerDeck = playerDeck.concat(discardPile.splice(0));
     }
-    deckReader();
-    discardReader();
+    updateAll();
     return playerDeck;
 }
 
@@ -180,15 +181,13 @@ function discardFromHand(card){
         var cardElement = document.getElementById(card.name);
         cardElement.parentNode.removeChild(cardElement);
     }
-    deckReader();
-    discardReader();
+    updateAll();
 }
 
 function discardFromBuy(card){
     discardPile.push(card);
     removeBuyableCards();
-    deckReader();
-    discardReader(); 
+    updateAll();
 }
 
 function removeBuyableCards() {
