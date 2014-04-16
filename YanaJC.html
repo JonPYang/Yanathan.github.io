@@ -87,11 +87,11 @@ function add(cards){
       for(var i = 0; i < drawCount && cards.length !== 0; i++) {
             hand.unshift(cards.shift()); 
             var deckCard = document.createElement("input");
-            var currentCardName = hand[0].name;
+            var currentCard = hand[0];
             deckCard.setAttribute("type", "button");
-            deckCard.setAttribute("Id", currentCardName);
-            deckCard.setAttribute("value", currentCardName);
-            deckCard.setAttribute("onClick", onClickHelper(currentCardName));
+            deckCard.setAttribute("Id", currentCard.name);
+            deckCard.setAttribute("value", currentCard.name);
+            deckCard.setAttribute("onClick", onClickHelper(currentCard));
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
