@@ -127,10 +127,10 @@ function reDeck(discardPile){
 }
 
 function discardFromHand(card){
-    if (hand.indexOf(card) > -1) {
-        discardPile.push(hand[hand.indexOf(card)]);
-        hand.splice(hand.indexOf(card), 1);
-        var cardElement = document.getElementById(card);
+    if (hand.indexOf(card.value) > -1) {
+        discardPile.push(hand[hand.indexOf(card.value)]);
+        hand.splice(hand.indexOf(card.value), 1);
+        var cardElement = document.getElementById(card.value);
         cardElement.parentNode.removeChild(cardElement);
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
