@@ -35,6 +35,8 @@ Create log box for each action that occurs
 
 */
 function onCardPress(card){
+    document.getElementById("1").innerHTML="Card = " + card.value
+    document.getElementById("2").innerHTML="Card.cardType = " + card.cardType
     if(card.cardType === 'money') {
         moneyCount += card.money;
     }
