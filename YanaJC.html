@@ -153,7 +153,7 @@ function discardFromHand(card){
     if (hand.indexOf(card) > -1) {
         discardPile.push(hand[hand.indexOf(card)]);
         hand.splice(hand.indexOf(card), 1);
-        var cardElement = document.getElementById(card);
+        var cardElement = document.getElementById(card.name);
         cardElement.parentNode.removeChild(cardElement);
     }
     document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
