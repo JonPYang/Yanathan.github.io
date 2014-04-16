@@ -34,6 +34,24 @@ Show cards on mouseover
 Create log box for each action that occurs
 
 */
+function onCardPress(card){
+    if(card.cardType === 'money') {
+        moneyCount += card.money;
+    }
+    else if(card.cardType === 'actionReaction') {
+        
+    }
+    else if(card.cardType === 'actionAttack') {
+        
+    }
+    else if(card.cardType === 'action') {
+        
+    }
+    else {
+        document.getElementById("errorCatch").innerHTML="ERROR, CARD TYPE NOT FOUND";         
+    }
+    discardFromHand(card.value);
+}
 
 
 function buy(){
@@ -66,7 +84,7 @@ function add(cards){
             deckCard.setAttribute("type", "button");
             deckCard.setAttribute("Id", hand[0]);
             deckCard.setAttribute("value", hand[0]);
-            deckCard.setAttribute("onclick", "discardFromHand(this.value)");
+            deckCard.setAttribute("onclick", "onCardPress(this)");
             document.getElementById("playableHand").appendChild(deckCard);
         }
     }
@@ -88,9 +106,6 @@ function add(cards){
     return hand;
 }
 
-function onCardPress(card){
-    
-}
 
 function newTurn() {
     while(hand.length > 0) {
