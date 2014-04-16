@@ -64,12 +64,14 @@ function buy(){
     //var buyableCardArray = listOfBuyableCards()
     if(buyCount >= 1){
         for (var i in buyableCards) {
+            var currentCard = buyableCards[i];
             var buyable = document.createElement("input");
+            buyable.card = currentCard;
             buyable.setAttribute("type", "button");
             buyable.setAttribute("name", "PurchasableCards");
-            buyable.value = buyableCards[i].name;
-            buyable.Id = buyableCards[i].name;
-            buyable.setAttribute("onclick", "discardFromBuy(this.value)");
+            buyable.value = currentCard.name;
+            buyable.Id = currentCard.name;
+            buyable.setAttribute("onclick", "discardFromBuy(this.card)");
             document.getElementById("buyableCards").appendChild(buyable);
         }
         buyCount--;
@@ -109,9 +111,12 @@ function add(cards){
     
     else 
         document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
-        for (var i in playerDeck){
-                document.getElementById("deckTest").innerHTML="Deck: " + playerDeck[i].name;
+    
+    var deckReader = [];    
+    for (var i in playerDeck){
+            deckReader.push(playerDeck[i].name);
         }
+    document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
 }
@@ -135,13 +140,8 @@ function newTurn() {
     document.getElementById("displayBuys").innerHTML=buyCount;
 }
 
-function removeBuyableCards() {
-    var removeCards = document.getElementById("buyableCards");
-    while(removeCards.firstChild) {
-        removeCards.removeChild(removeCards.firstChild);
-    }
-    removeCards.innerHTML="Buy: ";
-}
+
+
 function reDeck(discardPile){
     if(discardPile) {
         shuffle(discardPile);
@@ -164,7 +164,13 @@ function discardFromHand(card){
 
 function discardFromBuy(card){
     discardPile.push(card);
-    removeBuyableCards();
+    function removeBuyableCards() {
+        var removeCards = document.getElementById("buyableCards");
+            while(removeCards.firstChild) {
+                removeCards.removeChild(removeCards.firstChild);
+            }
+            removeCards.innerHTML="Buy: ";
+        }
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile; 
 }
 
