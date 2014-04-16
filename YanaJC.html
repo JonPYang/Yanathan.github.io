@@ -115,7 +115,7 @@ function onCardPress(card){
 }
 
 
-function buy(){
+function buyList(){
     //var buyableCardArray = listOfBuyableCards()
     if(buyCount >= 1){
         for (var i in buyableCards) {
@@ -126,14 +126,18 @@ function buy(){
             buyable.setAttribute("name", "PurchasableCards");
             buyable.value = currentCard.name;
             buyable.Id = currentCard.name;
-            buyable.setAttribute("onclick", "discardFromBuy(this.card)");
+            buyable.setAttribute("onclick", "buy(this.card)");
             document.getElementById("buyableCards").appendChild(buyable);
         }
         buyCount--;
         document.getElementById("displayBuys").innerHTML=buyCount;
     }
 }
-    
+
+function buy(card){
+    moneyCount =- card.cost;
+    discardFromBuy(card);
+}
 // TODO: Ask for a selection of cards in the game, return selected cards as array
 function listOfBuyableCards(){
     
@@ -220,7 +224,7 @@ function shuffle(deck) {
 <p id="actionCountId">Actions: <span id="displayActions"></span></p>
 <p id="buysCountId">Buys: <span id="displayBuys"></span></p>
     <input type="button" onclick="newTurn()" value="New turn">
-    <input type="button" onclick="buy()" value="Buy Cards">
+    <input type="button" onclick="buyList()" value="Buy Cards">
     
 <p></p>
 
