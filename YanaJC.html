@@ -103,8 +103,9 @@ function add(cards){
     
     else 
         document.getElementById("errorCatch").innerHTML="ERROR: FAILURE TO ADD CARD";
-    
-    document.getElementById("deckTest").innerHTML="Deck: " + playerDeck;
+        for (var i in playerDeck){
+                document.getElementById("deckTest").innerHTML="Deck: " + playerDeck[i].name;
+        }
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardPile;  
     return hand;
 }
