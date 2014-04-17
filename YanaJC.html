@@ -130,6 +130,13 @@ function buyList(){
             buyable.setAttribute("onclick", "buy(this.card)");
             document.getElementById("buyableCards").appendChild(buyable);
         }
+                var cancel = document.createElement("input");
+        cancel.setAttribute("type", "button");
+        cancel.setAttribute("name", "cancel");
+        cancel.value = "Cancel";
+        cancel.Id = "cancel";
+        cancel.setAttribute("onclick", "buy('cancel')");
+        document.getElementById("buyableCards").appendChild(cancel);
         buyCount--;
         updateAll();
     }
