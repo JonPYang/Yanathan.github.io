@@ -4,8 +4,8 @@
 <script>
 
 var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
-var copper = {name:'copper', cardType:'money', money:1, cost:0}, silver = {name:'silver', cardType:'money', money:2, cost:3}, gold = {name:'gold', cardType:'money', money:3, cost:6};
-var estate = {name:'estate', cardType:'victoryCard', money:0, cost:2}
+var copper = {name:'copper', cardType:'money', money:1, cost:0, remainingCards:30}, silver = {name:'silver', cardType:'money', money:2, cost:3, remainingCards:12}, gold = {name:'gold', cardType:'money', money:3, cost:6, remainingCards:12};
+var estate = {name:'estate', cardType:'victoryCard', money:0, cost:2, remainingCards: 8}
 var chapel = {cardType:'action', cost:2};
 var moat = {cardType:'actionReaction', card:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
@@ -15,12 +15,8 @@ var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate
 
 
 /* TODO: 
-Ensure cards can only be brought with right amount of money
 Enable cards keeping track of player values (draw/buy/action/money/victory points)
 
-Change deck and discard pile to only show numbers of cards remaining instead of card values themselves
-
-Enable cancel button when buying cards but check to see if anything else has been brought already
 Create limit for buyable cards
 Work in actionable cards
 Create end game conditions
@@ -33,6 +29,8 @@ Fix first turn to start as a first turn
 Clean up GUI to show buyable cards on the side with cost and money remaining
 Show cards on mouseover
 Create log box for each action that occurs
+
+Change deck and discard pile to only show numbers of cards remaining instead of card values themselves
 
 */
 function newTurn() {
@@ -125,7 +123,7 @@ function buyList(){
             buyable.card = currentCard;
             buyable.setAttribute("type", "button");
             buyable.setAttribute("name", "PurchasableCards");
-            buyable.value = currentCard.name;
+            buyable.value = currentCard.name + " " + currentCard.remainingCards;
             buyable.Id = currentCard.name;
             buyable.setAttribute("onclick", "buy(this.card)");
             document.getElementById("buyableCards").appendChild(buyable);
@@ -149,6 +147,7 @@ function buy(card){
     }
     if ((moneyCount - card.cost) >= 0){
         moneyCount -= card.cost;
+        card.remainingCards -= 1;
         discardFromBuy(card);
         updateAll(); 
     }
