@@ -145,7 +145,7 @@ function buy(card){
         discardFromBuy(card);
         updateAll(); 
     }
-    if ((moneyCount - card.cost) >= 0){
+    if ((moneyCount - card.cost) >= 0 && (card.remainingCards > 0)){
         moneyCount -= card.cost;
         card.remainingCards -= 1;
         discardFromBuy(card);
