@@ -39,7 +39,7 @@ function newTurn() {
     while(hand.length > 0) {
         discardFromHand(hand[0]);
     }
-    if (playerDeck.length > drawCount) {
+    if (playerDeck.length >= drawCount) {
         add(playerDeck);
     } 
     else {
