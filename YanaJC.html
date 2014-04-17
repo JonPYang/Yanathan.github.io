@@ -130,15 +130,45 @@ function buyList(){
             buyable.setAttribute("onclick", "buy(this.card)");
             document.getElementById("buyableCards").appendChild(buyable);
         }
+        var cancel = document.createElement("input)");
+        cancel.setAttribute("type", "button");
+        buyable.setAttribute("name", "cancel");
+        buyable.setAttribute("value", "Cancel");
+        buyable.Id = "cancel";
+        buyable.setAttribute("onclick", "buy('cancel')");
         buyCount--;
-    updateAll();
+        updateAll();
     }
 }
 
 function buy(card){
-    moneyCount -= card.cost;
-    discardFromBuy(card);
-    updateAll();
+    if ((moneyCount - card.cost) >= 0){
+        moneyCount -= card.cost;
+        discardFromBuy(card);
+        updateAll(); 
+    }
+}
+
+function discardFromBuy(card){
+    if(card === 'cancel'){
+        removeBuyableCards();
+        buyCount++;
+        updateAll();
+    } else if(card) {
+        discardPile.push(card);
+        removeBuyableCards();
+        updateAll();
+    } else {
+        document.getElementById("errorCatch").innerHTML="ERROR, NO CARD PASSED TO DISCARDFROMBUY";  
+    }
+}
+
+function removeBuyableCards() {
+    var removeCards = document.getElementById("buyableCards");
+    while(removeCards.firstChild) {
+        removeCards.removeChild(removeCards.firstChild);
+    }
+    removeCards.innerHTML="Buy: ";
 }
 // TODO: Ask for a selection of cards in the game, return selected cards as array
 function listOfBuyableCards(){
@@ -184,19 +214,9 @@ function discardFromHand(card){
     updateAll();
 }
 
-function discardFromBuy(card){
-    discardPile.push(card);
-    removeBuyableCards();
-    updateAll();
-}
 
-function removeBuyableCards() {
-    var removeCards = document.getElementById("buyableCards");
-    while(removeCards.firstChild) {
-        removeCards.removeChild(removeCards.firstChild);
-    }
-    removeCards.innerHTML="Buy: ";
-}
+
+
         
 function shuffle(deck) {
     var m = deck.length, t, i;
