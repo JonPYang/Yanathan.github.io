@@ -133,7 +133,7 @@ function buyList(){
         var cancel = document.createElement("input");
         cancel.setAttribute("type", "button");
         buyable.setAttribute("name", "cancel");
-        buyable.setAttribute("value", "Cancel");
+        buyable.value = "Cancel";
         buyable.Id = "cancel";
         buyable.setAttribute("onclick", "buy('cancel')");
         document.getElementById("buyableCards").appendChild(cancel);
@@ -143,6 +143,10 @@ function buyList(){
 }
 
 function buy(card){
+    if(card === 'cancel'){
+        discardFromBuy(card);
+        updateAll(); 
+    }
     if ((moneyCount - card.cost) >= 0){
         moneyCount -= card.cost;
         discardFromBuy(card);
