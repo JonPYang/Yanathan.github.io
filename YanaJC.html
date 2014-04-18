@@ -101,7 +101,7 @@ function onCardPress(card){
     }
     else if(card.cardType === 'action') {
         if(actionCount > 0){
-            chapel();
+            doChapel();
         }
     }
     else if(card.cardType === 'victoryCard') {
@@ -233,7 +233,7 @@ function shuffle(deck) {
     return deck;
 }
 
-function chapel() {
+function doChapel() {
     document.getElementById("prompt").innerHTML="Select cards to trash"
     
         for(var i in hand) {
