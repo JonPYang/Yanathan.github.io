@@ -237,7 +237,7 @@ function doChapel() {
     document.getElementById("prompt").innerHTML="Select cards to trash"
     
         for(var i in hand) {
-            hand.element.setAttribute("onclick", "moveToTrash(this.card)");
+            hand[i].element.setAttribute("onclick", "moveToTrash(this.card)");
         }
 }
 
