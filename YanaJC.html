@@ -5,19 +5,19 @@
 
 var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
 var copper = {name:'copper', cardType:'money', money:1, cost:0, remainingCards:30}, silver = {name:'silver', cardType:'money', money:2, cost:3, remainingCards:12}, gold = {name:'gold', cardType:'money', money:3, cost:6, remainingCards:12};
-var estate = {name:'estate', cardType:'victoryCard', money:0, cost:2, remainingCards: 8}
+var estate = {name:'estate', cardType:'victoryCard', money:0, cost:2, victoryPoints:1 remainingCards: 8}
 var chapel = {cardType:'action', cost:2};
 var moat = {cardType:'actionReaction', card:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
 var village = {cardType:'action', cost:3, card:1, actions:2};
-var buyableCards = [copper, silver, gold]
+var chapel = {cardType:'action', cost:2, remainingCards:8;
+var buyableCards = [copper, silver, gold, chapel]
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
 
 
 /* TODO: 
 Enable cards keeping track of player values (draw/buy/action/money/victory points)
 
-Create limit for buyable cards
 Work in actionable cards
 Create end game conditions
 
@@ -101,7 +101,9 @@ function onCardPress(card){
         
     }
     else if(card.cardType === 'action') {
-        
+        if(actionCount > 0){
+            chapel();
+        }
     }
     else if(card.cardType === 'victoryCard') {
         
@@ -219,9 +221,6 @@ function discardFromHand(card){
 }
 
 
-
-
-        
 function shuffle(deck) {
     var m = deck.length, t, i;
     while(m) {
@@ -235,6 +234,24 @@ function shuffle(deck) {
     return deck;
 }
 
+function chapel() {
+    document.getElementById("prompt").innerHTML="Select cards to trash"
+    
+        for(var i in hand) {
+            hand[i].onclick = moveToTrash(this.card);
+        }
+}
+
+function moveToTrash(card) {
+    var trashPile = [];
+    if (hand.indexOf(card) > -1) {
+        trashPile.push(hand[hand.indexOf(card)]);
+        hand.splice(hand.indexOf(card), 1);
+        var cardElement = document.getElementById(card.name);
+        cardElement.parentNode.removeChild(cardElement);
+        document.getElementById("trash").appendChild(card);
+    }
+}
 </script>
 <head>
 </head>
@@ -255,9 +272,14 @@ function shuffle(deck) {
 
 <p></p>
 
+<span id="prompt"></span>
+<p></p>
+<span id="trash"></span>
+
 <span id="buyableCards">Buyable Cards:</span>
 
 <p></p>
+
 
 <p id="errorCatch"></p>
 <p id="1"></p>
