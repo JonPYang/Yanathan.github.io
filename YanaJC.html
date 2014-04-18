@@ -238,6 +238,9 @@ function doChapel() {
     
         for(var i in hand) {
             hand[i].element.setAttribute("onclick", "moveToTrash(this.card)");
+        var cardElement = document.getElementById(card.name);
+        cardElement.parentNode.removeChild(cardElement);
+        document.getElementById("trash").appendChild(currentCard.element);
         }
 }
 
