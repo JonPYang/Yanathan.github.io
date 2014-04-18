@@ -120,16 +120,16 @@ function buyList(){
     if(buyCount >= 1){
         for (var i in buyableCards) {
             var currentCard = buyableCards[i];
-            var buyable = document.createElement("input");
-            buyable.card = currentCard;
-            buyable.setAttribute("type", "button");
-            buyable.setAttribute("name", "PurchasableCards");
-            buyable.value = currentCard.name + " " + currentCard.remainingCards;
-            buyable.Id = currentCard.name;
-            buyable.setAttribute("onclick", "buy(this.card)");
-            document.getElementById("buyableCards").appendChild(buyable);
+            currentCard.element = document.createElement("input");
+            currentCard.card = currentCard;
+            currentCard.element.setAttribute("type", "button");
+            currentCard.element.setAttribute("name", "PurchasableCards");
+            currentCard.element.value = currentCard.name + " " + currentCard.remainingCards;
+            currentCard.element.Id = currentCard.name;
+            currentCard.element.setAttribute("onclick", "buy(this.card)");
+            document.getElementById("buyableCards").appendChild(currentCard.element);
         }
-                var cancel = document.createElement("input");
+        var cancel = document.createElement("input");
         cancel.setAttribute("type", "button");
         cancel.setAttribute("name", "cancel");
         cancel.value = "Cancel";
@@ -243,6 +243,7 @@ function doChapel() {
 
 function moveToTrash(card) {
     var trashPile = [];
+    document.getElementById("1").innerHTML=hand.indexOf(card);
     if (hand.indexOf(card) > -1) {
         trashPile.push(hand[hand.indexOf(card)]);
         hand.splice(hand.indexOf(card), 1);
