@@ -121,7 +121,7 @@ function buyList(){
         for (var i in buyableCards) {
             var currentCard = buyableCards[i];
             currentCard.element = document.createElement("input");
-            currentCard.card = currentCard;
+            currentCard.element.card = currentCard;
             currentCard.element.setAttribute("type", "button");
             currentCard.element.setAttribute("name", "PurchasableCards");
             currentCard.element.value = currentCard.name + " " + currentCard.remainingCards;
