@@ -18,7 +18,7 @@ $(document).ready(function(){
     $("#gameBoard").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p>');
     $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList()" value="Buy Cards">');
     $("#gameBoard").append('<p id="playableHand">Hand: </p>');
-    $("#gameBoard").append('<p id="buyableCards">Buyable Cards:</p>');
+    $("#gameBoard").append('<p id="buyableCardsList">Buyable Cards:</p>');
 }
 
 
@@ -62,7 +62,7 @@ function displayHand(cards){
      for(var i in cards){
          cardId++;
          var card = cards[i];
-         $("#buyableCards").append("<input id='"+cardId+"'>");
+         $("#playableHand").append("<input id='"+cardId+"'>");
          $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
          $("#"+cardId).data(cardId.toString(), card);
      }
@@ -72,8 +72,8 @@ function onCardPress(cardId){
     card = $("#"+cardId).data(cardId.toString());
     if(card.cardType === 'money') {
         moneyCount += card.money;
+        discardFromHand(cardId);
     }
-           discardFromHand(cardId);
        updateAll();
 
 }
@@ -102,7 +102,42 @@ function discardReader(){
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
 }
 
-
-
+function buyList(){
+    //var buyableCardArray = listOfBuyableCards()
+    if(buyCount>1) {
+        for (var i in buyableCards) {
+            $("#buyableCardsList").append("<input id='"+cardId+"'>");
+            $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
+            $("#"+cardId).data(cardId.toString(), card);
+        }
+        $("#buyableCardsList").append("<input id=cancel");
+        $("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","cancel()");
+        buyCount--;
+    }
+    /*
+    if(buyCount >= 1){
+        for (var i in buyableCards) {
+            var currentCard = buyableCards[i];
+            var buyable = document.createElement("input");
+            buyable.card = currentCard;
+            buyable.setAttribute("type", "button");
+            buyable.setAttribute("name", "PurchasableCards");
+            buyable.value = currentCard.name + " " + currentCard.remainingCards;
+            buyable.Id = currentCard.name;
+            buyable.setAttribute("onclick", "buy(this.card)");
+            document.getElementById("buyableCards").appendChild(buyable);
+        }
+                var cancel = document.createElement("input");
+        cancel.setAttribute("type", "button");
+        cancel.setAttribute("name", "cancel");
+        cancel.value = "Cancel";
+        cancel.Id = "cancel";
+        cancel.setAttribute("onclick", "buy('cancel')");
+        document.getElementById("buyableCards").appendChild(cancel);
+        buyCount--;
+        updateAll();
+    }
+    */
+}
 
 
