@@ -55,7 +55,7 @@ function discard(whereFrom, cardId){
             document.getElementById("errorCatch").innerHTML="ERROR, CARD NOT FOUND IN HAND WHILE TRYING TO DISCARD"
         }
     } else if(whereFrom === "fromBuy"){
-        if(card === 'cancel'){
+        if(cardId === 'cancel'){
             $("#buyableCardsList").children().remove();
             buyCount++;
             updateAll();
