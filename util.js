@@ -58,6 +58,6 @@ function displayHand(cards){
      }
 }
 
-function onCardPress(card){
-    
+function onCardPress(cardId){
+    card = $("#"+cardId).data(cardId.toString());
 }
