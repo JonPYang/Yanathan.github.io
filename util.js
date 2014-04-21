@@ -43,6 +43,16 @@ function newTurn() {
     updateAll();
 }
 
+function discardFromHand(cardId){
+    card = $("#"+cardId).data(cardId.toString());
+    if (hand.indexOf(card) > -1) {
+        discardPile.push(hand[hand.indexOf(card)]);
+        hand.splice(hand.indexOf(card), 1);
+        $("#"+cardId).remove();
+    }
+    updateAll();
+}
+
 function add(card){
         if(card)
             hand.unshift(card);
@@ -63,7 +73,9 @@ function onCardPress(cardId){
     if(card.cardType === 'money') {
         moneyCount += card.money;
     }
+           discardFromHand(cardId);
        updateAll();
+
 }
 
 function updateAll(){
@@ -89,6 +101,7 @@ function discardReader(){
     }
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
 }
+
 
 
 
