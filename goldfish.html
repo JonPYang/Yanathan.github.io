@@ -10,13 +10,30 @@
 
 <body>
 
+<div>
+<p id="deckTest">Deck:</p>
+<p id="discardPile">Discard Pile:</p>
+<p id="moneyCountId">Money: <p id="displayMoney"></span></p>
+<p id="actionCountId">Actions: <p id="displayActions"></span></p>
+<p id="buysCountId">Buys: <p id="displayBuys"></span></p>
+</div>
 
-<!-- Main content -->
-<h1>My first styled page</h1>
+<div>
+    <input type="button" onclick="newTurn()" value="New turn">
+    <input type="button" onclick="buyList()" value="Buy Cards">
+</div>
 
-<p>If I click this. I should disappear</p>
 
+<div><span id="playableHand">Hand: </span></div>
 
+<div><span id="buyableCards">Buyable Cards:</span></div>
+
+<div id=ErrorCatching>
+<p id="errorCatch"></p>
+<p id="1"></p>
+<p id="2"></p>
+<p id="3"></p>
+</div>
 
 </body>
 
