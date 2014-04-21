@@ -90,7 +90,7 @@ function onCardPress(cardId){
     card = $("#"+cardId).data(cardId.toString());
     if(card.cardType === 'money') {
         moneyCount += card.money;
-        discardFromHand("fromHand", cardId);
+        discard("fromHand", cardId);
     }
        updateAll();
 
