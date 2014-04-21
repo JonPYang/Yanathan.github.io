@@ -104,7 +104,7 @@ function discardReader(){
 
 function buyList(){
     //var buyableCardArray = listOfBuyableCards()
-    if(buyCount>1) {
+    if(buyCount>=1) {
         for (var i in buyableCards) {
             $("#buyableCardsList").append("<input id='"+cardId+"'>");
             $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
