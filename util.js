@@ -44,8 +44,8 @@ function newTurn() {
 }
 
 function discard(whereFrom, cardId){
-    card = $("#"+cardId).data(cardId.toString());
     if(whereFrom === "fromHand"){
+        card = $("#"+cardId).data(cardId.toString());
         if (hand.indexOf(card) > -1) {
             discardPile.push(hand[hand.indexOf(card)]);
             hand.splice(hand.indexOf(card), 1);
