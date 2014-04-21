@@ -1,9 +1,5 @@
 $(document).ready(function(){
     
-function newGameReady(){
-    $("#gameInitializer").hide();
-    }
-    
 
 function newTurn() {
     while(hand.length > 0) {
@@ -25,5 +21,5 @@ function newTurn() {
 });
 
 function newGame(){
-    newGameReady();
+    $("#gameInitializer").hide();
 }
