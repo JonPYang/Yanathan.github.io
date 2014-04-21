@@ -51,9 +51,12 @@ function add(card){
 function displayHand(cards){
      for(var i in cards){
          cardId++;
-         var element = $("#buyableCards").append("<input id='"+cardId+"'>");
-         element.card = cards[i];
-         element.attr("type","button").attr("value",cards[i].name).attr("onclick",onCardPress(this.card, cardId));
+         var card = cards[i];
+         $("#buyableCards").append("<input id='"+cardId+"'>");
+         var currentCard = $("#"+cardId);
+         currentCard.attr("type","button").attr("value",card.name);
+         currentCard.data(cardId, card);
+
      }
 }
 
