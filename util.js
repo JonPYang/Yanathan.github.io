@@ -7,7 +7,7 @@ var bureaucrat = {cardType:'actionAttack', cost:4};
 var village = {cardType:'action', cost:3, card:1, actions:2};
 var buyableCards = [copper, silver, gold, chapel]
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
-
+var cardId = 0;
 
 $(document).ready(function(){
     
@@ -49,16 +49,15 @@ function add(card){
 }
 
 function displayHand(cards){
-    var x = 0;
      for(var i in cards){
-         var card = cards[i];
-         $("#buyableCards").append("<input id='"+card.name+x+"'>");
-         $("#"+card.name+x).attr("type","button").attr("value",card.name);
-         x++;
+         cardId++;
+         var element = $("#buyableCards").append("<input id='"+cardId+"'>");
+         element.card = card[i];
+         element.attr("type","button").attr("value",card.name).attr("onclick",onCardPress(this.card, cardId));
      }
 }
 
-function onCardPress(card){
+function onCardPress(card, cardId){
     
 }
 
