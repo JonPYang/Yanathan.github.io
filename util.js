@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 function newTurn() {
     while(hand.length > 0) {
-        discard(hand[0]);
+        discard("fromHand", hand[0]);
     }
     if (playerDeck.length >= drawCount) {
         for(var i in playerDeck){
