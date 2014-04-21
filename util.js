@@ -52,7 +52,7 @@ function displayHand(cards){
      for(var i in cards){
          var card = cards[i];
          $("#buyableCards").append("<input id='"+card.name+"'>");
-         $(card.name).attr("type","button").attr("value",card.name);
+         $("#"+card.name).attr("type","button").attr("value",card.name);
      }
 }
 
