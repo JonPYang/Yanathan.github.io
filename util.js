@@ -139,7 +139,7 @@ function buyList(buyableCards){
 
 function buy(cardId){
     if(cardId === 'cancel'){
-        discard(fromBuy, cardId);
+        discard("fromBuy", cardId);
         updateAll(); 
     }
     else {
