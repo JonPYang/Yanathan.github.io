@@ -127,7 +127,7 @@ function buyList(buyableCards){
             var card = buyableCards[i];
             cardId++;
             $("#buyableCardsList").append("<input id='"+cardId+"'>");
-            $("#"+cardId).attr("type","button").attr("value",card.name + card.remainingCards).attr("onclick","buy("+cardId.toString()+")");
+            $("#"+cardId).attr("type","button").attr("value",card.name + " " + card.remainingCards).attr("onclick","buy("+cardId.toString()+")");
             $("#"+cardId).data(cardId.toString(), card);
         }
         $("#buyableCardsList").append("<input id=cancel>");
@@ -147,7 +147,7 @@ function buy(cardId){
         if ((moneyCount - card.cost) >= 0 && (card.remainingCards > 0)){
             moneyCount -= card.cost;
             card.remainingCards -= 1;
-            discardFromBuy("fromBuy");
+            discard("fromBuy");
             updateAll(); 
         }
     }
