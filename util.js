@@ -60,4 +60,36 @@ function displayHand(cards){
 
 function onCardPress(cardId){
     card = $("#"+cardId).data(cardId.toString());
+    if(card.cardType === 'money') {
+        moneyCount += card.money;
+    }
+       updateAll();
 }
+
+function updateAll(){
+    document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("displayActions").innerHTML=actionCount;
+    document.getElementById("displayBuys").innerHTML=buyCount;
+    deckReader();
+    discardReader();
+}
+
+function deckReader(){
+        var deckReader = [];    
+    for (var i in playerDeck){
+            deckReader.push(playerDeck[i].name);
+        }
+        document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
+}
+
+function discardReader(){
+    var discardReader = [];
+    for (var i in discardPile){
+        discardReader.push(discardPile[i].name);
+    }
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
+}
+
+
+
+
