@@ -16,7 +16,7 @@ $(document).ready(function(){
     function newGame(){
     $("#gameInitializer").hide();
     $("#gameBoard").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p>');
-    $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList()" value="Buy Cards">');
+    $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards">');
     $("#gameBoard").append('<p id="playableHand">Hand: </p>');
     $("#gameBoard").append('<p id="buyableCardsList">Buyable Cards:</p>');
 }
@@ -102,7 +102,7 @@ function discardReader(){
     document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
 }
 
-function buyList(){
+function buyList(buyableCards){
     //var buyableCardArray = listOfBuyableCards()
     if(buyCount>=1) {
         for (var i in buyableCards) {
