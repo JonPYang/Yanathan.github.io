@@ -22,9 +22,10 @@ function newTurn() {
 
 function newGame(){
     $("#gameInitializer").hide();
-    $("#gameBoard").append('<p id="deckTest">Deck:</p>');
-    $("#gameBoard").append('<p id="discardPile">Discard Pile:</p>');
-    $("#gameBoard").append('<p id="moneyCountId">Money: <span id="displayMoney"></span></p>');
-    $("#gameBoard").append('<p id="actionCountId">Actions: <span id="displayActions"></span></p>');
-    $("#gameBoard").append('<p id="buysCountId">Buys: <span id="displayBuys"></span></p>');
+    $("#gameBoard").append('<p id="deckTest">Deck:</p>'
+    '<p id="discardPile">Discard Pile:</p>'
+    '<p id="moneyCountId">Money: <span id="displayMoney"></span></p>'
+    '<p id="actionCountId">Actions: <span id="displayActions"></span></p>'
+    '<p id="buysCountId">Buys: <span id="displayBuys"></span></p>'
+    );
 }
