@@ -44,7 +44,7 @@ function newTurn() {
 }
 
 function add(card){
-        if(cards)
+        if(card)
             hand.unshift(card);
 }
 
