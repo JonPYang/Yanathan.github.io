@@ -1,9 +1,9 @@
 $(document).ready(function(){
-  $("p").click(function(){
-    $(this).hide();
-  });
-});
-
+  
+  function newGame(){
+    $(#"gameInitializer").hide());
+  }
+  
 function newTurn() {
     while(hand.length > 0) {
         discard(hand[0]);
@@ -20,3 +20,6 @@ function newTurn() {
     moneyCount = 0;
     updateAll();
 }
+
+});
+
