@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
   function newGame(){
-    $(#"gameInitializer").hide());
+    $("#gameInitializer").hide());
   }
   
 function newTurn() {
