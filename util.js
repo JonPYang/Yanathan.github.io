@@ -1,11 +1,10 @@
-
-  
-$(document).ready(function(){
-  
-  function newGame(){
+    function newGame(){
     $("#gameInitializer").hide();
   }
   
+$(document).ready(function(){
+  
+
 function newTurn() {
     while(hand.length > 0) {
         discard(hand[0]);
