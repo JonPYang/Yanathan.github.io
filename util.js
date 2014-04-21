@@ -1,3 +1,9 @@
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+});
+
 function newTurn() {
     while(hand.length > 0) {
         discard(hand[0]);
