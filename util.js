@@ -17,8 +17,8 @@ $(document).ready(function(){
     $("#gameInitializer").hide();
     $("#gameBoard").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p>');
     $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList()" value="Buy Cards">');
-    $("#gameBoard").append('<span id="playableHand">Hand: </span>');
-    $("#gameBoard").append('<span id="buyableCards">Buyable Cards:</span>');
+    $("#gameBoard").append('<p id="playableHand">Hand: </p>');
+    $("#gameBoard").append('<p id="buyableCards">Buyable Cards:</p>');
 }
 
 
@@ -53,12 +53,12 @@ function displayHand(cards){
          cardId++;
          var card = cards[i];
          $("#buyableCards").append("<input id='"+cardId+"'>");
-         $("#"+cardId).attr("type","button").attr("value",card.name);
+         $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress(this.data(cardId))");
          $("#"+cardId).data(cardId.toString(), card);
      }
 }
 
-function onCardPress(card, cardId){
+function onCardPress(card){
     
 }
 
