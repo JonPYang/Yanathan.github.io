@@ -22,4 +22,5 @@ function newTurn() {
 
 function newGame(){
     $("#gameInitializer").hide();
+    $("#gameBoard").append('<p id="deckTest">Deck:</p>');
 }
