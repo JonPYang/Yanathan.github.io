@@ -43,13 +43,31 @@ function newTurn() {
     updateAll();
 }
 
-function discardFromHand(cardId){
+function discard(whereFrom, cardId){
     card = $("#"+cardId).data(cardId.toString());
-    if (hand.indexOf(card) > -1) {
-        discardPile.push(hand[hand.indexOf(card)]);
-        hand.splice(hand.indexOf(card), 1);
-        $("#"+cardId).remove();
-    }
+    if(whereFrom === "fromHand"){
+        if (hand.indexOf(card) > -1) {
+            discardPile.push(hand[hand.indexOf(card)]);
+            hand.splice(hand.indexOf(card), 1);
+            $("#"+cardId).remove();
+        }
+        else {
+            document.getElementById("errorCatch").innerHTML="ERROR, CARD NOT FOUND IN HAND WHILE TRYING TO DISCARD"
+        }
+    } else if(whereFrom === "fromBuy"){
+        if(card === 'cancel'){
+            $("#buyableCardsList").children().remove();
+            buyCount++;
+            updateAll();
+        } else if(card) {
+            discardPile.push(card);
+            $("#buyableCardsList").children().remove();
+            updateAll();
+        } else 
+            document.getElementById("errorCatch").innerHTML="ERROR, NO CARD PASSED TO DISCARDFROMBUY";  
+        
+    } else 
+        document.getElementById("errorCatch").innerHTML="ERROR, DO NOT KNOW WHERE CARD IS COMING FROM?"
     updateAll();
 }
 
@@ -72,7 +90,7 @@ function onCardPress(cardId){
     card = $("#"+cardId).data(cardId.toString());
     if(card.cardType === 'money') {
         moneyCount += card.money;
-        discardFromHand(cardId);
+        discardFromHand("fromHand", cardId);
     }
        updateAll();
 
@@ -109,37 +127,26 @@ function buyList(buyableCards){
             var card = buyableCards[i];
             cardId++;
             $("#buyableCardsList").append("<input id='"+cardId+"'>");
-            $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
+            $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","buy("+cardId.toString()+")");
             $("#"+cardId).data(cardId.toString(), card);
         }
         $("#buyableCardsList").append("<input id=cancel");
         $("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","cancel()");
         buyCount--;
     }
-    /*
-    if(buyCount >= 1){
-        for (var i in buyableCards) {
-            var currentCard = buyableCards[i];
-            var buyable = document.createElement("input");
-            buyable.card = currentCard;
-            buyable.setAttribute("type", "button");
-            buyable.setAttribute("name", "PurchasableCards");
-            buyable.value = currentCard.name + " " + currentCard.remainingCards;
-            buyable.Id = currentCard.name;
-            buyable.setAttribute("onclick", "buy(this.card)");
-            document.getElementById("buyableCards").appendChild(buyable);
-        }
-                var cancel = document.createElement("input");
-        cancel.setAttribute("type", "button");
-        cancel.setAttribute("name", "cancel");
-        cancel.value = "Cancel";
-        cancel.Id = "cancel";
-        cancel.setAttribute("onclick", "buy('cancel')");
-        document.getElementById("buyableCards").appendChild(cancel);
-        buyCount--;
-        updateAll();
+}
+
+function buy(card){
+    if(card === 'cancel'){
+        discardFromBuy(card);
+        updateAll(); 
     }
-    */
+    if ((moneyCount - card.cost) >= 0 && (card.remainingCards > 0)){
+        moneyCount -= card.cost;
+        card.remainingCards -= 1;
+        discardFromBuy(card);
+        updateAll(); 
+    }
 }
 
 
