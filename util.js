@@ -54,12 +54,60 @@ function displayHand(cards){
          var card = cards[i];
          $("#buyableCards").append("<input id='"+cardId+"'>");
          $("#"+cardId).data(cardId.toString(), card);
-         $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress($('#'"+cardId+").data("+cardId.toString()+"))");
+         $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress($('#'"+cardId.toString()+").data("+cardId.toString()+"), "+cardId.toString()+")");
      }
 }
 
 function onCardPress(card){
+    if(card.cardType === 'money') {
+        moneyCount += card.money;
+    }
+    else if(card.cardType === 'actionReaction') {
+        
+    }
+    else if(card.cardType === 'actionAttack') {
+        
+    }
+    else if(card.cardType === 'action') {
+        if(actionCount > 0){
+
+        }
+    }
+    else if(card.cardType === 'victoryCard') {
+        
+    }
+    else {
+        document.getElementById("errorCatch").innerHTML="ERROR, CARD TYPE NOT FOUND";         
+    }
+    updateAll();
+    discardFromHand(cardId);
+}
+
+discardFromHand(card){
     
 }
 
+function updateAll(){
+    document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("displayActions").innerHTML=actionCount;
+    document.getElementById("displayBuys").innerHTML=buyCount;
+    deckReader();
+    discardReader();
+}
+
+function deckReader(){
+        var deckReader = [];    
+    for (var i in playerDeck){
+            deckReader.push(playerDeck[i].name);
+        }
+        document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
+}
+
+function discardReader(){
+    var discardReader = [];
+    for (var i in discardPile){
+        discardReader.push(discardPile[i].name);
+    }
+    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
+}
 
