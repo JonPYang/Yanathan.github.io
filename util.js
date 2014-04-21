@@ -106,7 +106,7 @@ function buyList(buyableCards){
     //var buyableCardArray = listOfBuyableCards()
     if(buyCount>=1) {
         for (var i in buyableCards) {
-            var card = cards[i];
+            var card = buyableCards[i];
             cardId++;
             $("#buyableCardsList").append("<input id='"+cardId+"'>");
             $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
