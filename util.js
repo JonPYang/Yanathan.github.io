@@ -55,4 +55,8 @@ function displayHand(cards){
      }
 }
 
+function onCardPress(card){
+    
+}
+
 
