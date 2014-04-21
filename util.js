@@ -1,5 +1,5 @@
   function newGame(){
-    $("#gameInitializer").hide());
+
   }
   
 $(document).ready(function(){
