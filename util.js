@@ -40,9 +40,10 @@ function newTurn() {
         }
     
     else {
-       reDeck(discardPile);
-        add(playerDeck);
+        reDeck(discardPile);
+        add(playerDeck[0]);
     }
+    $("#buyableCardsList").children().remove();
     displayHand(hand);
     buyCount = 1;
     moneyCount = 0;
