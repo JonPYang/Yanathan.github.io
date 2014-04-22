@@ -30,15 +30,11 @@ function newTurn() {
         discard("fromHand", hand[0]);
     }
     if (playerDeck.length >= drawCount) {
-        var j = 0;
-        while(j < drawCount){
-            for(var i in playerDeck){
-            add(playerDeck[i]);
-            j++;
+            for(var i = 0; i < drawCount && cards.length !== 0; i++) {
+              add(playerDeck[i]);  
             }
         }
-
-        displayHand(hand);
+    displayHand(hand);
         
     } 
     //else {
