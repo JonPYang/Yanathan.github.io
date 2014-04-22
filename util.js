@@ -35,7 +35,7 @@ function newTurn() {
     }
     if (playerDeck.length >= drawCount) {
             for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-              add(playerDeck[i]);  
+              add(playerDeck[0]);  
             }
         }
     
