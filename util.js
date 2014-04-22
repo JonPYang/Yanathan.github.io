@@ -49,6 +49,15 @@ function newTurn() {
     updateAll();
 }
 
+function reDeck(discardPile){
+    if(discardPile) {
+        shuffle(discardPile);
+        playerDeck = playerDeck.concat(discardPile.splice(0));
+    }
+    updateAll();
+    return playerDeck;
+}
+
 function discard(whereFrom, cardId){
     if(whereFrom === "fromHand"){
         card = $("#"+cardId).data(cardId.toString());
