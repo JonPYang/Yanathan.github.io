@@ -27,7 +27,12 @@ function newGame(){
 
 function newTurn() {
     while(hand.length > 0) {
-        $('#playableHand input').each(discard("fromHand",this.attr('id')));
+        var handSearch = $('#playableHand input');
+        $().each(handSearch, function(i, value) {
+            discard("fromHand",this.attr('id'))
+            
+            });
+        
     }
     if (playerDeck.length >= drawCount) {
             for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
