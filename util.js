@@ -13,12 +13,15 @@ $(document).ready(function(){
     
 
 });
-    function newGame(){
+
+function newGame(){
     $("#gameInitializer").hide();
     $("#gameBoard").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p>');
     $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards">');
     $("#gameBoard").append('<p id="playableHand">Hand: </p>');
     $("#gameBoard").append('<p id="buyableCardsList">Buyable Cards:</p>');
+    shuffle(playerDeck);
+    newTurn();
 }
 
 
@@ -153,4 +156,16 @@ function buy(cardId){
     }
 }
 
+function shuffle(deck) {
+    var m = deck.length, t, i;
+    while(m) {
+        i = Math.floor(Math.random() * m--);
+        t = deck[m];
+        deck[m] = deck[i];
+        deck[i] = t;
+        }
+    deckReader();
+    discardReader();
+    return deck;
+}
 
