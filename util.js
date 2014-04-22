@@ -78,12 +78,12 @@ function discard(whereFrom, cardId){
 }
 
 function add(card){
-        if(playerDeck.indexOf(card) > 1-) {
+        if(playerDeck.indexOf(card) > -1) {
             hand.unshift(card);
             playerDeck.splice(playerDeck.indexOf(card), 1);
         }
         else
-            document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK"
+            document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK";
 }
 
 function displayHand(cards){
