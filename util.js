@@ -30,7 +30,7 @@ function newTurn() {
         var handSearch = $('#playableHand input');
         $.each(handSearch, function(i, value){
             //discard("fromHand",value.attr('id'));
-            console.log(value.attr('id'));
+            console.log(value);
             });
         
     }
