@@ -34,14 +34,13 @@ function newTurn() {
               add(playerDeck[i]);  
             }
         }
-    displayHand(hand);
-        
-    } 
+    
     //else {
     //    reDeck(discardPile);
     //    add(playerDeck);
     //}
     //removeBuyableCards();
+    displayHand(hand);
     buyCount = 1;
     moneyCount = 0;
     updateAll();
