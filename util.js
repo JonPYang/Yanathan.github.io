@@ -26,7 +26,7 @@ function newGame(){
 
 
 function newTurn() {
-    while(hand.length > 0) {
+    if(hand.length > 0) {
         var handSearch = $('#playableHand input');
         $().each(handSearch, function(i, value) {
             discard("fromHand",this.attr('id'))
