@@ -41,7 +41,9 @@ function newTurn() {
     
     else {
         reDeck(discardPile);
-        add(playerDeck[0]);
+            for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
+              add(playerDeck[0]);  
+            }
     }
     $("#buyableCardsList").children().remove();
     displayHand(hand);
