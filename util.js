@@ -39,11 +39,10 @@ function newTurn() {
             }
         }
     
-    //else {
-    //    reDeck(discardPile);
-    //    add(playerDeck);
-    //}
-    //removeBuyableCards();
+    else {
+       reDeck(discardPile);
+        add(playerDeck);
+    }
     displayHand(hand);
     buyCount = 1;
     moneyCount = 0;
@@ -79,8 +78,12 @@ function discard(whereFrom, cardId){
 }
 
 function add(card){
-        if(card)
+        if(playerDeck.indexOf(card) > 1-) {
             hand.unshift(card);
+            playerDeck.splice(playerDeck.indexOf(card), 1);
+        }
+        else
+            document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK"
 }
 
 function displayHand(cards){
