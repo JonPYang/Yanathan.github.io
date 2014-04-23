@@ -36,7 +36,7 @@ function onCardPress(cardId){
                 moneyCount += card.money;
             }
             if(card.actions > 0){
-                acountCount += card.actions;
+                actionCount += card.actions;
             }
             if(card.draw > 0){
                 for(var i = 0; i < card.draw; i++) {
