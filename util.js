@@ -4,7 +4,7 @@ var estate = {name:'estate', cardType:'victoryCard', cost:2, victoryPoints:1, re
 var chapel = {name:'chapel', cardType:'action', cost:2, remainingCards:8};
 var moat = {cardType:'actionReaction', draw:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
-var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2}, woodcutter = {name:'Woodcutter', cardType:'action', cost:3, money:2, buy:1}, festival = {name:'Festival', cardType:'action', cost:5, actions:2, buy:2 money:2};
+var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2}, woodcutter = {name:'Woodcutter', cardType:'action', cost:3, money:2, buy:1}, festival = {name:'Festival', cardType:'action', cost:5, actions:2, buy:2, money:2};
 var buyableCards = [copper, silver, gold, village, woodcutter, festival];
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
 var cardId = 0;
