@@ -163,7 +163,7 @@ function buyList(buyableCards){
             var card = buyableCards[i];
             cardId++;
             $("#buyableCardsList").append("<input id='"+cardId+"'>");
-            $("#"+cardId).attr({"type":"button", "value":card.name + "| Cost:" + card.cost + "| Remaining:" + card.remainingCards, "onclick":"buy("+cardId.toString()+")"});
+            $("#"+cardId).attr({"type":"button", "value":card.name + " |Cost:" + card.cost + "| Remaining:" + card.remainingCards, "onclick":"buy("+cardId.toString()+")"});
             $("#"+cardId).data(cardId.toString(), card);
         }
         $("#buyableCardsList").append("<input id=cancel>");
