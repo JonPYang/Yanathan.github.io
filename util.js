@@ -1,10 +1,10 @@
 var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
 var copper = {name:'copper', cardType:'money', money:1, cost:0, remainingCards:30}, silver = {name:'silver', cardType:'money', money:2, cost:3, remainingCards:12}, gold = {name:'gold', cardType:'money', money:3, cost:6, remainingCards:12};
-var estate = {name:'estate', cardType:'victoryCard', cost:2, victoryPoints:1, remainingCards: 8};
+var estate = {name:'estate', cardType:'victoryCard', cost:2, victoryPoints:1, remainingCards:8};
 var chapel = {name:'chapel', cardType:'action', cost:2, remainingCards:8};
 var moat = {cardType:'actionReaction', draw:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
-var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2}, woodcutter = {name:'Woodcutter', cardType:'action', cost:3, money:2, buy:1}, festival = {name:'Festival', cardType:'action', cost:5, actions:2, buy:2, money:2};
+var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2, remainingCards:8}, woodcutter = {name:'Woodcutter', cardType:'action', cost:3, money:2, buy:1, remainingCards:8}, festival = {name:'Festival', cardType:'action', cost:5, actions:2, buy:2, money:2, remainingCards:8};
 var buyableCards = [copper, silver, gold, village, woodcutter, festival];
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
 var cardId = 0;
