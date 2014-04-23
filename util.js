@@ -82,6 +82,7 @@ function newTurn() {
     displayHand(hand);
     buyCount = 1;
     moneyCount = 0;
+    actionCount = 1;
     updateAll();
 }
 
