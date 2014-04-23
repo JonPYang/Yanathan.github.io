@@ -79,6 +79,7 @@ function newTurn() {
         }
     }
     $("#buyableCardsList").children().remove();
+    isBuyListUp = false;
     buyCount = 1;
     moneyCount = 0;
     actionCount = 1;
