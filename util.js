@@ -167,7 +167,8 @@ function buyList(buyableCards){
             $("#"+cardId).data(cardId.toString(), card);
         }
         $("#buyableCardsList").append("<input id=cancel>");
-        $("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","buy('cancel')");
+        $("#cancel").attr({"type":"button", "value":"cancel", "onclick":"buy('cancel')"});
+        //$("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","buy('cancel')");
         buyCount--;
     }
     updateAll();
