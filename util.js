@@ -163,12 +163,12 @@ function buyList(buyableCards){
             var card = buyableCards[i];
             cardId++;
             $("#buyableCardsList").append("<input id='"+cardId+"'>");
-            $("#"+cardId).attr("type","button").attr("value",card.name + " " + card.remainingCards).attr("onclick","buy("+cardId.toString()+")");
+            $("#"+cardId).attr({"type":"button", "value":card.name + " " + card.remainingCards, "onclick":"onclick","buy("+cardId.toString()+")"});
             $("#"+cardId).data(cardId.toString(), card);
         }
         $("#buyableCardsList").append("<input id=cancel>");
         $("#cancel").attr({"type":"button", "value":"cancel", "onclick":"buy('cancel')"});
-        //$("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","buy('cancel')");
+        //$("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","buy('cancel')"); old style
         buyCount--;
     }
     updateAll();
