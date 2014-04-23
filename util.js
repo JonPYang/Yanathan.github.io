@@ -8,6 +8,7 @@ var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2, rem
 var buyableCards = [copper, silver, gold, village, woodcutter, festival];
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
 var cardId = 0;
+var isBuyListUp = false;
 
 $(document).ready(function(){        });
 
@@ -159,17 +160,20 @@ function discardReader(){
 function buyList(buyableCards){
     //var buyableCardArray = listOfBuyableCards()
     if(buyCount>=1) {
-        for (var i in buyableCards) {
-            var card = buyableCards[i];
-            cardId++;
-            $("#buyableCardsList").append("<input id='"+cardId+"'>");
-            $("#"+cardId).attr({"type":"button", "value":card.name + " |Cost:" + card.cost + "| Remaining:" + card.remainingCards, "onclick":"buy("+cardId.toString()+")"});
-            $("#"+cardId).data(cardId.toString(), card);
-        }
-        $("#buyableCardsList").append("<input id=cancel>");
-        $("#cancel").attr({"type":"button", "value":"cancel", "onclick":"buy('cancel')"});
+        if(isBuyListUp == false){
+            isBuyListUp = true;
+            for (var i in buyableCards) {
+                var card = buyableCards[i];
+                cardId++;
+                $("#buyableCardsList").append("<input id='"+cardId+"'>");
+                $("#"+cardId).attr({"type":"button", "value":card.name + " |Cost:" + card.cost + "| Remaining:" + card.remainingCards, "onclick":"buy("+cardId.toString()+")"});
+                $("#"+cardId).data(cardId.toString(), card);
+            }
+            $("#buyableCardsList").append("<input id=cancel>");
+            $("#cancel").attr({"type":"button", "value":"cancel", "onclick":"buy('cancel')"});
         //$("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","buy('cancel')"); old style
-        buyCount--;
+            buyCount--;
+        }
     }
     updateAll();
 }
@@ -188,6 +192,7 @@ function buy(cardId){
             updateAll(); 
         }
     }
+    isBuyListUp = false;
 }
 
 function shuffle(deck) {
