@@ -38,6 +38,9 @@ function onCardPress(cardId){
             if(card.actions > 0){
                 actionCount += card.actions;
             }
+            if(card.buy > 0){
+                buyCount += card.buy;
+            }
             if(card.draw > 0){
                 for(var i = 0; i < card.draw; i++) {
                     if(playerDeck.length == 0){
