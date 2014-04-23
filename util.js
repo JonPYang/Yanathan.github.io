@@ -32,19 +32,21 @@ function onCardPress(cardId){
     } else if(card.cardType === 'action') {
         if(actionCount > 0){
             actionCount -= 1;
-            if(card.money > 0)
+            if(card.money > 0){
                 moneyCount += card.money;
-            if(card.actions > 0)
+            }
+            if(card.actions > 0){
                 acountCount += card.actions;
-            if(card.draw > 0)
+            }
+            if(card.draw > 0){
                 for(var i = 0; i < card.draw; i++) {
                     if(playerDeck.length == 0){
                         reDeck(discardPile);
                     }
                     add(playerDeck[0]);
                 }
-            if(card.hasAction)
-            {
+            }
+            if(card.hasAction){
                 card.hasAction;
             }
         }
