@@ -1,6 +1,6 @@
 var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
 var copper = {name:'copper', cardType:'money', money:1, cost:0, remainingCards:30}, silver = {name:'silver', cardType:'money', money:2, cost:3, remainingCards:12}, gold = {name:'gold', cardType:'money', money:3, cost:6, remainingCards:12};
-var estate = {name:'estate', cardType:'victoryCard', cost:2, victoryPoints:1, remainingCards: 8}
+var estate = {name:'estate', cardType:'victoryCard', cost:2, victoryPoints:1, remainingCards: 8};
 var chapel = {name:'chapel', cardType:'action', cost:2, remainingCards:8};
 var moat = {cardType:'actionReaction', draw:2, cost:2};
 var bureaucrat = {cardType:'actionAttack', cost:4};
