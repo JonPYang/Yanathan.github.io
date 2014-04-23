@@ -39,7 +39,7 @@ function onCardPress(cardId){
             if(card.draw > 0)
                 for(var i = 0; i < card.draw; i++) {
                     if(playerDeck.length == 0){
-                        reDeck(discardPile)
+                        reDeck(discardPile);
                     }
                     add(playerDeck[0]);
                 }
