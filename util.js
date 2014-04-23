@@ -79,7 +79,6 @@ function newTurn() {
             }
     }
     $("#buyableCardsList").children().remove();
-    displayHand(hand);
     buyCount = 1;
     moneyCount = 0;
     actionCount = 1;
@@ -127,15 +126,14 @@ function add(card){
         if(playerDeck.indexOf(card) > -1) {
             hand.unshift(card);
             playerDeck.splice(playerDeck.indexOf(card), 1);
+            displayHand(card);
         }
         else
             document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK";
 }
 
-function displayHand(cards){
-     for(var i in cards){
+function displayHand(card){
          cardId++;
-         var card = cards[i];
          $("#playableHand").append("<input id='"+cardId+"'>");
          $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
          $("#"+cardId).data(cardId.toString(), card);
