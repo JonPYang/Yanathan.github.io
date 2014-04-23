@@ -137,7 +137,6 @@ function displayHand(card){
          $("#playableHand").append("<input id='"+cardId+"'>");
          $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
          $("#"+cardId).data(cardId.toString(), card);
-     }
 }
 
 function updateAll(){
