@@ -9,10 +9,7 @@ var buyableCards = [copper, silver, gold, village, woodcutter, festival];
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
 var cardId = 0;
 
-$(document).ready(function(){
-    
-
-});
+$(document).ready(function(){        });
 
 function newGame(){
     $("#gameInitializer").hide();
@@ -25,10 +22,11 @@ function newGame(){
 }
 
 function onCardPress(cardId){
-    card = $("#"+cardId).data(cardId.toString());
+    var card = $("#"+cardId).data(cardId.toString());
     if(card.cardType === 'money') {
         moneyCount += card.money;
         discard("fromHand", cardId);
+        document.getElementById("report").innerHTML="";
     } else if(card.cardType === 'action') {
         if(actionCount > 0){
             actionCount -= 1;
@@ -53,9 +51,12 @@ function onCardPress(cardId){
                 card.hasAction;
             }
             discard("fromHand", cardId);
+            document.getElementById("report").innerHTML="";
+        } else {
+            document.getElementById("report").innerHTML="Not enough action to play action card.";
         }
     }
-       updateAll();
+    updateAll();
 }
 
 function newTurn() {
@@ -67,21 +68,20 @@ function newTurn() {
         
     }
     if (playerDeck.length >= drawCount) {
-            for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-              add(playerDeck[0]);  
-            }
+        for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
+            add(playerDeck[0]);  
         }
-    
-    else {
+    } else {
         reDeck(discardPile);
-            for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-              add(playerDeck[0]);  
-            }
+        for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
+            add(playerDeck[0]);  
+        }
     }
     $("#buyableCardsList").children().remove();
     buyCount = 1;
     moneyCount = 0;
     actionCount = 1;
+    document.getElementById("report").innerHTML="";
     updateAll();
 }
 
@@ -90,7 +90,6 @@ function reDeck(discardPile){
         shuffle(discardPile);
         playerDeck = playerDeck.concat(discardPile.splice(0));
     }
-    updateAll();
     return playerDeck;
 }
 
@@ -101,10 +100,7 @@ function discard(whereFrom, cardId){
             discardPile.push(hand[hand.indexOf(card)]);
             hand.splice(hand.indexOf(card), 1);
             $("#"+cardId).remove();
-        }
-        else {
-            document.getElementById("errorCatch").innerHTML="ERROR, CARD NOT FOUND IN HAND WHILE TRYING TO DISCARD"
-        }
+        } else document.getElementById("errorCatch").innerHTML="ERROR, CARD NOT FOUND IN HAND WHILE TRYING TO DISCARD";
     } else if(whereFrom === "fromBuy"){
         if(cardId === 'cancel'){
             $("#buyableCardsList").children().remove();
@@ -114,29 +110,26 @@ function discard(whereFrom, cardId){
             discardPile.push(card);
             $("#buyableCardsList").children().remove();
             updateAll();
-        } else 
-            document.getElementById("errorCatch").innerHTML="ERROR, NO CARD PASSED TO DISCARDFROMBUY";  
+        } else document.getElementById("errorCatch").innerHTML="ERROR, NO CARD PASSED TO DISCARDFROMBUY";  
         
-    } else 
-        document.getElementById("errorCatch").innerHTML="ERROR, DO NOT KNOW WHERE CARD IS COMING FROM?"
+    } else document.getElementById("errorCatch").innerHTML="ERROR, DO NOT KNOW WHERE CARD IS COMING FROM?";
     updateAll();
 }
 
 function add(card){
-        if(playerDeck.indexOf(card) > -1) {
-            hand.unshift(card);
-            playerDeck.splice(playerDeck.indexOf(card), 1);
-            displayHand(card);
-        }
-        else
-            document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK";
+    if(playerDeck.indexOf(card) > -1) {
+        hand.unshift(card);
+        playerDeck.splice(playerDeck.indexOf(card), 1);
+        displayHand(card);
+    }
+    else document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK";
 }
 
 function displayHand(card){
-         cardId++;
-         $("#playableHand").append("<input id='"+cardId+"'>");
-         $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
-         $("#"+cardId).data(cardId.toString(), card);
+    cardId++;
+    $("#playableHand").append("<input id='"+cardId+"'>");
+    $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
+    $("#"+cardId).data(cardId.toString(), card);
 }
 
 function updateAll(){
@@ -148,11 +141,11 @@ function updateAll(){
 }
 
 function deckReader(){
-        var deckReader = [];    
+    var deckReader = [];    
     for (var i in playerDeck){
-            deckReader.push(playerDeck[i].name);
-        }
-        document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
+        deckReader.push(playerDeck[i].name);
+    }
+    document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
 }
 
 function discardReader(){
