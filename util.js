@@ -49,6 +49,7 @@ function onCardPress(cardId){
             if(card.hasAction){
                 card.hasAction;
             }
+            discard("fromHand", cardId);
         }
     }
        updateAll();
