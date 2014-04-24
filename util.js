@@ -190,12 +190,12 @@ function buy(cardId){
         if ((moneyCount - card.cost) >= 0 && (card.remainingCards > 0)){
             moneyCount -= card.cost;
             card.remainingCards -= 1;
-            if(card.remainingCards = 0) {
+            if(card.remainingCards === 0) {
                 cardsDepleted += 1;
             }
             discard("fromBuy");
         }
-        if(cardsDepleted >= 3 || province.remainingCards = 0) {
+        if(cardsDepleted >= 3 || province.remainingCards === 0) {
             endGame();
         }
     }
