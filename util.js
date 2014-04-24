@@ -1,9 +1,8 @@
 var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
 var copper = {name:'Copper', cardType:'money', money:1, cost:0, remainingCards:30}, silver = {name:'Silver', cardType:'money', money:2, cost:3, remainingCards:12}, gold = {name:'Gold', cardType:'money', money:3, cost:6, remainingCards:12};
 var estate = {name:'Estate', cardType:'victoryCard', cost:2, victoryPoints:1, remainingCards:8}, duchy = {name:'Douchy', cardType:'victoryCard', cost:5, victoryPoints:3, remainingCards:8}, province = {name:'Province', cardType:'victoryCard', cost:8, victoryPoints:7, remainingCards:8};
-var chapel = {name:'chapel', cardType:'action', cost:2, remainingCards:8};
-var moat = {cardType:'actionReaction', draw:2, cost:2};
-var bureaucrat = {cardType:'actionAttack', cost:4};
+var chapel = {name:'Chapel', cardType:'action', cost:2, remainingCards:8}; var moat = {cardType:'actionReaction', draw:2, cost:2}; var bureaucrat = {cardType:'actionAttack', cost:4};
+var cardsDepleted = 0;
 var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2, remainingCards:8}, woodcutter = {name:'Woodcutter', cardType:'action', cost:3, money:2, buy:1, remainingCards:8}, festival = {name:'Festival', cardType:'action', cost:5, actions:2, buy:2, money:2, remainingCards:8};
 var buyableCards = [copper, silver, gold, village, woodcutter, festival, estate, duchy, province];
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
@@ -18,6 +17,8 @@ function newGame(){
     $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards">');
     $("#gameBoard").append('<p id="playableHand">Hand: </p>');
     $("#gameBoard").append('<p id="buyableCardsList">Buyable Cards:</p>');
+    playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
+    cardsDepleted = 0;
     shuffle(playerDeck);
     newTurn();
 }
@@ -189,12 +190,19 @@ function buy(cardId){
         if ((moneyCount - card.cost) >= 0 && (card.remainingCards > 0)){
             moneyCount -= card.cost;
             card.remainingCards -= 1;
+            if(card.remainingCards = 0) {
+                cardsDepleted += 1;
+            }
             discard("fromBuy");
-            updateAll(); 
+        }
+        if(cardsDepleted >= 3 || province.remainingCards = 0) {
+            endGame();
         }
     }
     isBuyListUp = false;
 }
+
+
 
 function shuffle(deck) {
     var m = deck.length, t, i;
@@ -209,3 +217,8 @@ function shuffle(deck) {
     return deck;
 }
 
+function endGame(){
+    $("#gameBoard").children().remove();
+    $("#gameInitializer").show();
+    $("#victorytext").text("YOU WIN CARL. WAY TO GO. I DON'T KNOW HOW MANY VICTORY POINTS YOU HAVE CAUSE I AM LAZY CODING RIGHT NOW");
+}
