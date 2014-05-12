@@ -1,10 +1,10 @@
 var drawCount = 5, buyCount = 1, actionCount = 1, moneyCount = 0;
 var copper = {name:'Copper', cardType:'money', money:1, cost:0, remainingCards:30}, silver = {name:'Silver', cardType:'money', money:2, cost:3, remainingCards:12}, gold = {name:'Gold', cardType:'money', money:3, cost:6, remainingCards:12};
 var estate = {name:'Estate', cardType:'victoryCard', cost:2, victoryPoints:1, remainingCards:8}, duchy = {name:'Douchy', cardType:'victoryCard', cost:5, victoryPoints:3, remainingCards:8}, province = {name:'Province', cardType:'victoryCard', cost:8, victoryPoints:7, remainingCards:8};
-var chapel = {name:'Chapel', cardType:'action', cost:2, remainingCards:8}; var moat = {cardType:'actionReaction', draw:2, cost:2}; var bureaucrat = {cardType:'actionAttack', cost:4};
+var chapel = {name:'Chapel', cardType:'action', cost:2, remainingCards:8, hasAction:'true'}; var moat = {cardType:'actionReaction', draw:2, cost:2}; var bureaucrat = {cardType:'actionAttack', cost:4};
 var cardsDepleted = 0;
 var village = {name:'Village', cardType:'action', cost:3, draw:1, actions:2, remainingCards:8}, woodcutter = {name:'Woodcutter', cardType:'action', cost:3, money:2, buy:1, remainingCards:8}, festival = {name:'Festival', cardType:'action', cost:5, actions:2, buy:2, money:2, remainingCards:8};
-var buyableCards = [copper, silver, gold, village, woodcutter, festival, estate, duchy, province];
+var buyableCards = [copper, silver, gold, village, woodcutter, festival, estate, duchy, province, chapel];
 var playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
 var cardId = 0;
 var isBuyListUp = false;
@@ -13,10 +13,9 @@ $(document).ready(function(){        });
 
 function newGame(){
     $("#gameInitializer").hide();
-    $("#gameBoard").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p>');
-    $("#gameBoard").append('<input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards">');
-    $("#gameBoard").append('<p id="playableHand">Hand: </p>');
-    $("#gameBoard").append('<p id="buyableCardsList">Buyable Cards:</p>');
+	$("#gameBoard").append('<div id=otherPlayers></div><div id=playerBoard></div>');
+	$("#playerBoard").append('<div id=playerSide></div><div id=buyableCardsList></div>');
+    $("#playerSide").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p><p id="choiceLine"><input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards"></p><p id="playableHand">Hand: </p><pid="discard"></p>');
     playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
     cardsDepleted = 0;
     shuffle(playerDeck);
@@ -50,7 +49,7 @@ function onCardPress(cardId){
                 }
             }
             if(card.hasAction){
-                card.hasAction;
+                chapelaction();
             }
             discard("fromHand", cardId);
             document.getElementById("report").innerHTML="";
@@ -131,8 +130,9 @@ function add(card){
 function displayHand(card){
     cardId++;
     $("#playableHand").append("<input id='"+cardId+"'>");
-    $("#"+cardId).attr("type","button").attr("value",card.name).attr("onclick","onCardPress("+cardId+")");
+    $("#"+cardId).attr({"type":"button","value":card.name,"onclick":"onCardPress("+cardId+")"});
     $("#"+cardId).data(cardId.toString(), card);
+	classDefiner(card.cardType, cardId);
 }
 
 function updateAll(){
@@ -144,19 +144,20 @@ function updateAll(){
 }
 
 function deckReader(){
-    var deckReader = [];    
-    for (var i in playerDeck){
-        deckReader.push(playerDeck[i].name);
-    }
-    document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
+    //var deckReader = [];    
+    //for (var i in playerDeck){
+    //    deckReader.push(playerDeck[i].name);
+    //}
+    //document.getElementById("deckTest").innerHTML="Deck: " + deckReader;
+	document.getElementById("deckTest").innerHTML="Number of cards in Deck Pile: " + playerDeck.length.toString();
 }
 
 function discardReader(){
-    var discardReader = [];
-    for (var i in discardPile){
-        discardReader.push(discardPile[i].name);
-    }
-    document.getElementById("discardPile").innerHTML="Discard Pile: " + discardReader;
+    //var discardReader = [];
+    //for (var i in discardPile){
+    //    discardReader.push(discardPile[i].name);
+    //}
+    document.getElementById("discardPile").innerHTML="Number of Cards in Discard Pile: " + discardPile.length.toString();
 }
 
 function buyList(buyableCards){
@@ -170,14 +171,36 @@ function buyList(buyableCards){
                 $("#buyableCardsList").append("<input id='"+cardId+"'>");
                 $("#"+cardId).attr({"type":"button", "value":card.name + " |Cost:" + card.cost + "| Remaining:" + card.remainingCards, "onclick":"buy("+cardId.toString()+")"});
                 $("#"+cardId).data(cardId.toString(), card);
+				classDefiner(card.cardType, cardId);
             }
             $("#buyableCardsList").append("<input id=cancel>");
             $("#cancel").attr({"type":"button", "value":"cancel", "onclick":"buy('cancel')"});
         //$("#cancel").attr("type", "button").attr("value","cancel").attr("onclick","buy('cancel')"); old style
+		
             buyCount--;
         }
     }
     updateAll();
+}
+
+function classDefiner(cardType, cardId){
+	switch(cardType) {
+		case 'action':
+				$("#"+cardId).attr("class", "actionCard");
+				break;
+		default:
+			$("#"+cardId).attr("class", "errornotfound");
+			break;
+		case 'money':
+			$("#"+cardId).attr("class", "moneyCard");
+			break;
+		case 'victoryCard':
+			$("#"+cardId).attr("class", "victoryCard");
+			break;
+		case 'last':
+			$("#"+cardId).attr("class", "errorlast");
+			break;
+			}
 }
 
 function buy(cardId){
@@ -217,8 +240,18 @@ function shuffle(deck) {
     return deck;
 }
 
+function chapelaction() {
+for(var i in hand){
+	    cardId++;
+    $("#discard").append("<input id='"+cardId+"'> <label>"+card.name+"</label>");
+    $("#"+cardId).attr({"type":"checkbox","value":card.name,});
+    $("#"+cardId).data(cardId.toString(), card);
+	}
+		$("#discard").append("<input id='confirm' type='button' value='confirm'>")
+}
+
 function endGame(){
-    $("#gameBoard").children().remove();
+    $("#playerBoard").children().remove();
     $("#gameInitializer").show();
-    $("#victorytext").text("YOU WIN CARL. WAY TO GO. I DON'T KNOW HOW MANY VICTORY POINTS YOU HAVE CAUSE I AM LAZY CODING RIGHT NOW");
+    $("#victoryText").text("YOU WIN CARL. WAY TO GO. I DON'T KNOW HOW MANY VICTORY POINTS YOU HAVE CAUSE I AM LAZY CODING RIGHT NOW");
 }
