@@ -30,3 +30,58 @@ address {
   margin-top: 1em;
   padding-top: 1em;
   border-top: thin dotted } */
+body {
+	background-color: rgb(232,244,255);
+}
+
+#otherPlayers{
+	border-bottom: 2px solid #000;
+	padding-bottom: 50px;
+	margin: 20px;
+}
+
+#gameBoard {
+	background-color: #BAFFBA;
+	
+}
+
+#playerBoard { 
+	margin: 20px;
+	padding: 20px;
+}
+
+.actionCard{
+	border: 3px solid #B51C24;
+}
+.victoryCard{
+	border: 3px solid #267F2D;
+}
+.moneyCard{
+	border: 3px solid #CEC40E;
+}
+
+#playerSide{
+	background-color: rgba( 255,255,255,.50); 
+	padding: 10px;
+	border: 2px solid #9BACFF;
+	float: left;
+	width: 500px;
+	}
+
+#choiceLine{ padding-top: 10px;}
+
+#discardPile {border-bottom: 2px solid #86A100; margin-bottom: 25px}
+
+#moneyCountId { border-style: double; border-width: 1px; border-color: #CEC40E; border-radius: 25px; display:inline; margin: 25px 25px; padding: 10px 10px; width:85px }
+
+#actionCountId {border-style: double; border-width: 1px; border-color: red; border-radius: 25px; display:inline; margin: 25px; padding: 10px 10px; width:85px }
+
+#buysCountId {border-style: double; border-width: 1px; border-color: blue; border-radius: 25px; display:inline; margin: 25px; padding: 10px 10px; width:85px }
+
+#buyableCardsList{float: right; width: 300px;}
+
+::selection { color: #FFFFFF; background-color: #993366; }
+
+::-moz-selection { color: #FFFFFF; background-color: #993366; }
+
+
