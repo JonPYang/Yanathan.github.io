@@ -15,7 +15,7 @@ function newGame(){
     $("#gameInitializer").hide();
 	$("#gameBoard").append('<div id=otherPlayers></div><div id=playerBoard></div>');
 	$("#playerBoard").append('<div id=playerSide></div><div id=buyableCardsList></div>');
-    $("#playerSide").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p><p id="choiceLine"><input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards"></p><p id="playableHand">Hand: </p><pid="discard"></p>');
+    $("#playerSide").append('<p id="deckTest">Deck:</p><p id="discardPile">Discard Pile:</p><p id="moneyCountId">Money: <span id="displayMoney"></span></p><p id="actionCountId">Actions: <span id="displayActions"></span></p><p id="buysCountId">Buys: <span id="displayBuys"></span></p><p id="choiceLine"><input type="button" onclick="newTurn()" value="New turn"><input type="button" onclick="buyList(buyableCards)" value="Buy Cards"></p><p id="playableHand">Hand: </p><p id="trashList"></p>');
     playerDeck = [copper,copper,copper,copper,copper,copper,copper,estate,estate,estate], hand = [], discardPile = [];
     cardsDepleted = 0;
     shuffle(playerDeck);
@@ -29,6 +29,7 @@ function onCardPress(cardId){
         discard("fromHand", cardId);
         document.getElementById("report").innerHTML="";
     } else if(card.cardType === 'action') {
+        discard("fromHand", cardId);
         if(actionCount > 0){
             actionCount -= 1;
             if(card.money > 0){
@@ -51,7 +52,7 @@ function onCardPress(cardId){
             if(card.hasAction){
                 chapelaction();
             }
-            discard("fromHand", cardId);
+
             document.getElementById("report").innerHTML="";
         } else {
             document.getElementById("report").innerHTML="Not enough action to play action card.";
@@ -66,7 +67,6 @@ function newTurn() {
         $.each(handSearch, function(i, value){
             discard("fromHand",value.id);
             });
-        
     }
     if (playerDeck.length >= drawCount) {
         for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
@@ -79,6 +79,7 @@ function newTurn() {
         }
     }
     $("#buyableCardsList").children().remove();
+	$("#trashList").children().remove();
     isBuyListUp = false;
     buyCount = 1;
     moneyCount = 0;
@@ -243,11 +244,44 @@ function shuffle(deck) {
 function chapelaction() {
 for(var i in hand){
 	    cardId++;
-    $("#discard").append("<input id='"+cardId+"'> <label>"+card.name+"</label>");
-    $("#"+cardId).attr({"type":"checkbox","value":card.name,});
-    $("#"+cardId).data(cardId.toString(), card);
+		$("#trashList").append("<input id='"+cardId+"'> <label>"+hand[i].name+"</label>");
+		$("#"+cardId).attr({"type":"checkbox","value":hand[i].name,"name":"trashValues"});
+		}
+	$("#trashList").append("<input id='confirm' type='button' value='confirm' onClick=trashFromHand()>")
+		
+		//        if (hand.indexOf(card) > -1) {
+        //    discardPile.push(hand[hand.indexOf(card)]);
+        //    hand.splice(hand.indexOf(card), 1);
+        //    $("#"+cardId).remove();
+        //} else document.getElementById("errorCatch").innerHTML="ERROR, CARD NOT FOUND IN HAND WHILE TRYING TO DISCARD";
+}
+
+function trashFromHand() {
+    $(":checked").each(
+		function(){
+		var index = valueChecker(this.value);
+		if(index === -1)
+			console.log("card not found in hand");
+		else{
+			console.log(index);
+			hand.splice(index, 1);
+		}
+	});
+	$("#playableHand").children().remove();
+	for(var j in hand) {
+		displayHand(hand[j]);
 	}
-		$("#discard").append("<input id='confirm' type='button' value='confirm'>")
+	$("#trashList").children().remove();	
+}
+
+function valueChecker(value){
+	var index = -1;
+	for(var i in hand){
+		if(hand[i].name == value){
+			return i;
+		}		
+	}
+	return index;
 }
 
 function endGame(){
