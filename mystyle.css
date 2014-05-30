@@ -52,16 +52,22 @@ body {
 
 .actionCard{
 	border: 3px solid #B51C24;
+	background-color: #FFCCCC;
+	padding-bottom: 25px; padding-top: 25px;
 }
 .victoryCard{
 	border: 3px solid #267F2D;
+	background-color: #BDFFAF;
+	padding-bottom: 25px; padding-top: 25px;
 }
 .moneyCard{
 	border: 3px solid #CEC40E;
+	background-color: #FFF0A0;
+	padding-bottom: 25px; padding-top: 25px;
 }
 
 #playerSide{
-	background-color: rgba( 255,255,255,.50); 
+	background-color: rgba( 255,255,255,.25); 
 	padding: 10px;
 	border: 2px solid #9BACFF;
 	float: left;
