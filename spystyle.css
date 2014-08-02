@@ -29,26 +29,28 @@ p{
 	background-color: #BDFFAF;
 }
 .removed{
-	background-color: #FFCCCC;
+	color: #353535;
+	background-color: #000000;
 	padding-bottom: 5px; padding-top: 5px;
 	text-decoration:line-through;
 	font-size:80%;
 }
 .available{
-	border: 3px solid #267F2D;
-	background-color: #BDFFAF;
+	color: #AFAFAF;
+	background-color:  #000000;
 	padding-bottom: 10px; padding-top: 10px;
 }
 .picked{
-	border: 3px solid #CEC40E;
-	background-color: #FFF0A0;
+	color: #FFFFFF;
+	background-color:  #000000;
 	padding-bottom: 10px; padding-top: 10px;
 	font-size:120%;
 }
 
 .known{
-	border: 3px solid #4F60FF;
-	background-color: #87ADFF;
+	color: #FFFFFF;
+	border: 3px solid #FFFFFF;
+	background-color:  #000000;
 	padding-bottom: 10px; padding-top: 10px;
 	}
 
