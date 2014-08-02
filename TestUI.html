@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
+
   <link rel="stylesheet" href="spystyle.css">
   <script src="jquery.js"></script>
 
@@ -9,20 +10,14 @@
 	<script src="spyUI.js"></script>
 </head>
 
-<body>
+<body oncontextmenu="return false;">
 
-<div id="GameTypeReference">
+<div id="Reference">
+<span id="Type">Any </span><span id="firstX"> </span><span id = "of"> of </span><span id="secondX"></span>
 </div>
 <div id="Missions">
-  <div id="BugAmbassador"><p>Bug Ambassador</p></div> 
-  <div id="TransferMicrofilm"></div> 
-  <div id="DoubleAgent"></div>  
-  <div id="SwapStatue"></div> 
-  <div id="SeduceTarget"></div> 
-  <div id="InspectStatues"></div> 
-  <div id="PurloinGuestList"></div> 
-  <div id="FingerprintAmbassador "></div> 
 </div>
+<input id="KnownButton" type="button" value="Known" onClick="setKnown()"><input id="AnyButton" type="button" value="Any" onClick="setAny()">
 </body>
 
 
