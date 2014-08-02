@@ -20,6 +20,14 @@ p{
 	font-family: Helvetica, Geneva, Arial,
     SunSans-Regular, sans-serif }
 
+	
+#KnownButton {
+	background-color: #87ADFF;
+}
+
+#AnyButton {
+	background-color: #BDFFAF;
+}
 .removed{
 	background-color: #FFCCCC;
 	padding-bottom: 5px; padding-top: 5px;
