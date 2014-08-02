@@ -9,6 +9,7 @@ var fingerprintAmbassador = {code:'fingerprint', name:'Fingerprint Ambassador', 
 var missions = [bugAmbassador, transferMicrofilm, contactDoubleAgent, swapStatue, seduceTarget, inspectStatues, purloinGuestList, fingerprintAmbassador];
 var checkPicked = false;
 var checkKnown = false;
+var checkAny = false;
 
 $(document).ready(function(){ 
 
@@ -55,6 +56,9 @@ $(document).ready(function(){
 			if($(this).hasClass("known")){
 			checkKnown = true;
 			}
+			if($(this).hasClass("available")){
+			checkAny = true;
+			}
 		});
 		if(checkPicked){
 			$("#Type").text("Picked ");
@@ -66,6 +70,16 @@ $(document).ready(function(){
 			$("#firstX").text(($(".picked").length).toString());
 			$("#of").text(" of ");
 			$("#secondX").text((8-$(".removed").length).toString());
+				if(!checkAny){
+				$("#Type").text("Any ");
+				$("#firstX").text((($(".available").length)+$(".picked").length).toString());
+				$("#secondX").text((8-$(".removed").length).toString());
+				$('#Missions input').each(function(index) {
+					if($(this).hasClass("known") || $(this).hasClass("picked")){
+							$(this).attr({"class":"available"});
+					}
+				});
+			}
 		}
 		else if(checkKnown){
 			$("#Type").text("Known ");
@@ -81,6 +95,7 @@ $(document).ready(function(){
 			
 		checkPicked = false;
 		checkKnown = false;
+		checkAny = false;
 	}
 });
 
