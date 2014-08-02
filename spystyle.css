@@ -1,13 +1,13 @@
+
 body {
 	background-color: #FFF8DD;
 }
 
-p {
+p{
 	margin: 1px;
 	border: 1px;
 	padding: 1px;
-	
-}
+		}
 		
 #Reference {
 	font-size:200%;
@@ -21,9 +21,10 @@ p {
     SunSans-Regular, sans-serif }
 
 .removed{
-	border: 3px solid #B51C24;
 	background-color: #FFCCCC;
-	padding-bottom: 10px; padding-top: 10px;
+	padding-bottom: 5px; padding-top: 5px;
+	text-decoration:line-through;
+	font-size:80%;
 }
 .available{
 	border: 3px solid #267F2D;
@@ -34,6 +35,7 @@ p {
 	border: 3px solid #CEC40E;
 	background-color: #FFF0A0;
 	padding-bottom: 10px; padding-top: 10px;
+	font-size:120%;
 }
 
 .known{
@@ -41,3 +43,9 @@ p {
 	background-color: #87ADFF;
 	padding-bottom: 10px; padding-top: 10px;
 	}
+
+::selection { color: #FFFFFF; background-color: #993366; }
+
+::-moz-selection { color: #FFFFFF; background-color: #993366; }
+
+
