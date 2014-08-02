@@ -15,13 +15,14 @@ $(document).ready(function(){
 
 	for(i in missions){
 		$("#Missions").append("<input id='"+missions[i].code+"'><p></p>");
-		$("#"+missions[i].code).attr({"type":"button","value":missions[i].name, "class":"known"});
+		$("#"+missions[i].code).attr({"type":"button","value":missions[i].name, "class":"available"});
 	}
 	
-		$("#Type").text("Known ");
-		$("#firstX").text(($(".known").length).toString());
-		$("#of").text("");
-		$("#secondX").text("");
+		$("#Type").text("Any ");
+		$("#of").text(" of ");
+		$("#firstX").text("");
+		$("#firstX").append("<form name='test'><select name='numbers' size='1'><option>1</option><option>2</option><option selected='selected'>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select></form>");
+		$("#secondX").text((8-$(".removed").length).toString());
 		
 	$('#Missions input').mousedown(function(event) {
 		switch (event.which) {
