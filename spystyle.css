@@ -22,11 +22,13 @@ p{
 
 	
 #KnownButton {
-	background-color: #87ADFF;
+	background-color: #000F00;
+	color: #FFFFFF
 }
 
 #AnyButton {
-	background-color: #BDFFAF;
+	color: #AFAFAF;
+	background-color: #00010A;
 }
 .removed{
 	color: #353535;
@@ -37,7 +39,7 @@ p{
 }
 .available{
 	color: #AFAFAF;
-	background-color:  #000000;
+	background-color:  #00010A;
 	padding-bottom: 10px; padding-top: 10px;
 }
 .picked{
@@ -50,7 +52,7 @@ p{
 .known{
 	color: #FFFFFF;
 	border: 3px solid #FFFFFF;
-	background-color:  #000000;
+	background-color:  #000F00;
 	padding-bottom: 10px; padding-top: 10px;
 	}
 
