@@ -30,7 +30,7 @@ $(document).ready(function(){
 				typeSetter();
 				break;
 			case 2:
-				$("#Type").text("Pick ");
+				$("#Type").text("Picked ");
 				$("#"+this.id).attr({"class":"picked"});
 				typeSetter();
 				break;
@@ -48,24 +48,34 @@ $(document).ready(function(){
 	
 
 	function typeSetter(){
-		if($("#Type").text() === "Pick ") {
+	$('#Missions input').each(function(index) {
+			if($(this).hasClass("picked")){
+			checkPicked = true;
+			}
+			if($(this).hasClass("known")){
+			checkKnown = true;
+			}
+		});
+		if(checkPicked){
+			$("#Type").text("Picked ");
 			$('#Missions input').each(function(index) {
 				if($(this).hasClass("known")){
 					$(this).attr({"class":"available"});
-					}
-				});
+				}
+			});
 			$("#firstX").text(($(".picked").length).toString());
 			$("#of").text(" of ");
 			$("#secondX").text((8-$(".removed").length).toString());
 		}
-		else if($("#Type").text() === "Known "){
+		else if(checkKnown){
+			$("#Type").text("Known ");
 			$("#firstX").text(($(".known").length).toString());
 			$("#of").text("");
 			$("#secondX").text("");
-			} else {
+			
+		} else {
 			$("#Type").text("Any ");
 			$("#firstX").text((($(".available").length)+$(".picked").length).toString());
-			$("#of").text(" of ");
 			$("#secondX").text((8-$(".removed").length).toString());
 			}
 			
