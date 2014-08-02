@@ -56,9 +56,6 @@ $(document).ready(function(){
 			if($(this).hasClass("known")){
 			checkKnown = true;
 			}
-			if($(this).hasClass("available")){
-			checkAny = true;
-			}
 		});
 		if(checkPicked){
 			$("#Type").text("Picked ");
@@ -70,14 +67,20 @@ $(document).ready(function(){
 			$("#firstX").text(($(".picked").length).toString());
 			$("#of").text(" of ");
 			$("#secondX").text((8-$(".removed").length).toString());
-				if(!checkAny){
-				$("#Type").text("Any ");
-				$("#firstX").text((($(".available").length)+$(".picked").length).toString());
-				$("#secondX").text((8-$(".removed").length).toString());
-				$('#Missions input').each(function(index) {
-					if($(this).hasClass("known") || $(this).hasClass("picked")){
-							$(this).attr({"class":"available"});
+			$('#Missions input').each(function(index) {
+					if($(this).hasClass("available")){
+						checkAny = true;
 					}
+				});
+			if(!checkAny){
+					$("#Type").text("Known ");
+					$('#Missions input').each(function(index) {
+						if($(this).hasClass("any") || $(this).hasClass("picked")){
+							$(this).attr({"class":"known"});
+					}
+					$("#firstX").text(($(".known").length).toString());
+					$("#of").text("");
+					$("#secondX").text("");
 				});
 			}
 		}
