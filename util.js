@@ -71,12 +71,14 @@ function newTurn() {
     }
     if (playerDeck.length >= drawCount) {
         for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-            add(playerDeck[0], isNewHand);  
+            add(playerDeck[0], isNewHand);
+	    isNewHand = false;
         }
     } else {
         reDeck(discardPile);
         for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-            add(playerDeck[0], isNewHand);  
+            add(playerDeck[0], isNewHand);
+	    isNewHand = false;
         }
     }
     $("#buyableCardsList").children().remove();
