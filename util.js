@@ -135,7 +135,7 @@ function displayHand(card, isNewHand){
     if(isNewHand){
 	cardId = 0;
     } else {
-	cardID++;
+	cardId++;
     }
     $("#playableHand").append("<input id='"+cardId+"'>");
     $("#"+cardId).attr({"type":"button","value":card.name,"onclick":"onCardPress("+cardId+")"});
