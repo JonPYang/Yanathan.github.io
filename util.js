@@ -46,7 +46,7 @@ function onCardPress(cardId){
                     if(playerDeck.length == 0){
                         reDeck(discardPile);
                     }
-                    add(playerDeck[0]);
+                    add(playerDeck[0], false);
                 }
             }
             if(card.hasAction){
@@ -62,6 +62,7 @@ function onCardPress(cardId){
 }
 
 function newTurn() {
+	var isNewHand = true;
     if(hand.length > 0) {
         var handSearch = $('#playableHand input');
         $.each(handSearch, function(i, value){
@@ -70,12 +71,12 @@ function newTurn() {
     }
     if (playerDeck.length >= drawCount) {
         for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-            add(playerDeck[0]);  
+            add(playerDeck[0], isNewHand);  
         }
     } else {
         reDeck(discardPile);
         for(var i = 0; i < drawCount && playerDeck.length !== 0; i++) {
-            add(playerDeck[0]);  
+            add(playerDeck[0], isNewHand);  
         }
     }
     $("#buyableCardsList").children().remove();
@@ -119,17 +120,21 @@ function discard(whereFrom, cardId){
     updateAll();
 }
 
-function add(card){
+function add(card, isNewHand){
     if(playerDeck.indexOf(card) > -1) {
         hand.unshift(card);
         playerDeck.splice(playerDeck.indexOf(card), 1);
-        displayHand(card);
+        displayHand(card, isNewHand);
     }
     else document.getElementById("errorCatch").innerHTML="ERROR ADDING CARD, COULD NOT REMOVE FROM PLAYERDECK";
 }
 
-function displayHand(card){
-    cardId++;
+function displayHand(card, isNewHand){
+	if(isNewHand){
+		cardId = 0;
+	} else {
+		cardID++;
+	}
     $("#playableHand").append("<input id='"+cardId+"'>");
     $("#"+cardId).attr({"type":"button","value":card.name,"onclick":"onCardPress("+cardId+")"});
     $("#"+cardId).data(cardId.toString(), card);
@@ -137,7 +142,7 @@ function displayHand(card){
 }
 
 function updateAll(){
-    document.getElementById("displayMoney").innerHTML=moneyCount;
+    document.getElementById("HMoney").innerHTML=moneyCount;
     document.getElementById("displayActions").innerHTML=actionCount;
     document.getElementById("displayBuys").innerHTML=buyCount;
     deckReader();
@@ -269,7 +274,7 @@ function trashFromHand() {
 	});
 	$("#playableHand").children().remove();
 	for(var j in hand) {
-		displayHand(hand[j]);
+		displayHand(hand[j], false);
 	}
 	$("#trashList").children().remove();	
 }
